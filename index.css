@@ -95,3 +95,16 @@ a {
 .pronouns {
 	opacity: 0.6;
 }
+
+.copyright {
+	margin: 0px;
+	padding: 1.5in 2in;
+	background-color: none;
+}
+
+.copyright div {
+	color: #fff;
+	opacity: 0.8;
+	text-align: center;
+	font-size: 14pt;
+}
