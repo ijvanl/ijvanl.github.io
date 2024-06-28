@@ -8,6 +8,10 @@ var stacks = [
 
 function fillStacks(text) {
 	var files = text.split(/\n/);
+	files = files.map(value => ({ value, sort: Math.random() }))
+	.sort((a, b) => a.sort - b.sort)
+	.map(({ value }) => value);
+
 	for (var i = 0; i < files.length; i++) { 
 		var image = document.createElement("img");
 		image.src = "images/" + files[i];

@@ -7,6 +7,8 @@ html, body {
 	padding: 0px;
 	min-height: 100vh;
 	font-family: 'Times New Roman', Times, serif;
+	color: #fff;
+	background-color: #000;
 }
 
 .hero {
@@ -29,7 +31,6 @@ html, body {
 }
 
 .hero * {
-	color: #fff;
 	background-color: #000;
 	width: fit-content;
 }
@@ -43,7 +44,6 @@ html, body {
 	width: calc(100% / 3);
 	display: flex;
 	flex-flow: column nowrap;
-	background-color: #000;
 }
 
 .stack img {
@@ -52,7 +52,6 @@ html, body {
 
 .stack h1 {
 	font-size: 64pt;
-	color: #fff;
 	margin: 0px;
 	padding: 0px;
 }
