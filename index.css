@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap');
+
 * {
 	box-sizing: border-box;
 }
@@ -6,9 +8,13 @@ html, body {
 	margin: 0px;
 	padding: 0px;
 	min-height: 100vh;
-	font-family: 'Times New Roman', Times, serif;
+	font-family: "JetBrains Mono", monospace;
 	color: #fff;
 	background: url("static.gif"), #000;
+}
+
+a {
+	color: #fff;
 }
 
 .hero {
@@ -24,15 +30,14 @@ html, body {
 }
 
 .hero h1 {
-	font-size: 144px;
+	font-size: 100px;
+	font-weight: 200;
 	margin: 0px;
 	padding: 0px;
 }
 
 .hero a {
 	font-size: 32px;
-	color: #fff;
-	display: block;
 }
 
 .hero * {
@@ -62,9 +67,31 @@ html, body {
 	width: 100%;
 }
 
+.infobox {
+	margin: 0px;
+	padding: 1.5in 2in;
+	background-color: #000;
+}
+
+.infobox h1 {
+	font-size: 64pt;
+	font-weight: 200;
+	margin: 0px;
+}
+
+.infobox div {
+	padding-top: 0.5in;
+	font-size: 16pt;
+}
+
 .stack h1 {
 	font-size: 64pt;
+	font-weight: 200;
 	margin: 0px;
 	padding: 40px;
 	background-color: #000;
+}
+
+.pronouns {
+	opacity: 0.6;
 }
