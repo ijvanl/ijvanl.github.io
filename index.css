@@ -19,6 +19,10 @@ html, body {
 	background-position: top right;
 }
 
+.hero .box {
+	padding: 50px 60px;
+}
+
 .hero h1 {
 	font-size: 144px;
 	margin: 0px;
