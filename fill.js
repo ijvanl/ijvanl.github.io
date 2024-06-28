@@ -17,7 +17,7 @@ function fillStacks(text) {
 	for (var i = 0; i < files.length; i++) { 
 		var image = document.createElement("img");
 		image.src = "images/" + files[i];
-		stacks[i % 3].appendChild(image);
+		stacks[i % stacks.length].appendChild(image);
 	}
 }
 
