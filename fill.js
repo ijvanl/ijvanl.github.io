@@ -3,7 +3,9 @@
 var stacks = [
 	document.getElementById("stack1"),
 	document.getElementById("stack2"),
-	document.getElementById("stack3")
+	document.getElementById("stack3"),
+	document.getElementById("stack2"), // doubled for 2x photos on non-hero sides
+	document.getElementById("stack3"),
 ];
 
 function fillStacks(text) {

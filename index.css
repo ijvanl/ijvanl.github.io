@@ -27,6 +27,7 @@ html, body {
 
 .hero a {
 	font-size: 32px;
+	color: #fff;
 	display: block;
 }
 
@@ -41,9 +42,16 @@ html, body {
 }
 
 .stack {
-	width: calc(100% / 3);
 	display: flex;
 	flex-flow: column nowrap;
+}
+
+#stack1 {
+	width: 50%;
+}
+
+#stack2, #stack3 {
+	width: 25%;
 }
 
 .stack img {
