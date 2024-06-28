@@ -2,12 +2,10 @@ DSCF0490.jpg
 DSCF0510.jpg
 DSCF0516.jpg
 DSCF0530.jpg
-DSCF0535.jpg
-DSCF0536.jpg
-DSCF0537.jpg
 DSCF0538.jpg
 DSCF0539.jpg
 DSCF0568-Enhanced-NR.jpg
+DSCF0628 2.jpg
 DSCF0628.jpg
 DSCF0659_alt.jpg
 DSCF1287-Enhanced-NR.jpg
@@ -45,3 +43,4 @@ DSCF9981-Enhanced-NR.jpg
 P1100993.jpg
 P1120006.jpg
 P1130052.jpg
+images.txt
