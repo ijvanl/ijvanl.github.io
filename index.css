@@ -45,10 +45,73 @@ a {
 	width: fit-content;
 }
 
+.bar {
+	width: 100vw;
+	height: 1.5in;
+	position: sticky;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	column-gap: 0.5in;
+	padding-left: 1in;
+	background-color: #000;
+}
+
+.bar h1 {
+	font-size: 32px;
+	font-weight: 200;
+	margin: 0px;
+	padding: 0px;
+}
+
+.bar a {
+	font-size: 18px;
+}
+
 #gallery {
 	display: flex;
 	flex-flow: row nowrap;
 }
+
+#gallery-window {
+	display: flex;
+	flex-flow: row nowrap;
+	width: 100vw;
+	margin: 0in -2in;
+	margin-bottom: -1.5in;
+}
+
+.gallery-page {
+	width: calc(100vw / 3);
+	min-height: calc(100vw / 3);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-position: center;
+	background-size: 100%;
+	font-size: 16pt;
+	transition: background-size 0.05s;
+}
+
+.gallery-page:hover {
+	background-size: 102%;
+}
+
+
+#gp1 {
+	background-image: url("bg_live.jpg");
+}
+
+#gp2 {
+	background-image: url("bg_gallery.jpg");
+}
+
+#gp3 {
+	background-image: url("bg_experimental.jpg");
+}
+
 
 .stack {
 	display: flex;
@@ -70,8 +133,16 @@ a {
 .infobox {
 	margin: 0px;
 	padding: 1.5in 2in;
+}
+
+.infoblk {
 	background-color: #000;
 }
+
+.infogrey {
+	background-color: #111;
+}
+
 
 .infobox h1 {
 	font-size: 64pt;
@@ -107,4 +178,9 @@ a {
 	opacity: 0.8;
 	text-align: center;
 	font-size: 14pt;
+}
+
+#email {
+	font-weight: 900;
+	font-style: italic;
 }

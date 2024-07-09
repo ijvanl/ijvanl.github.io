@@ -16,12 +16,12 @@ function fillStacks(text) {
 
 	for (var i = 0; i < files.length; i++) { 
 		var image = document.createElement("img");
-		image.src = "images/" + files[i];
+		image.src = window.location.href + "/images/" + files[i];
 		stacks[i % stacks.length].appendChild(image);
 	}
 }
 
-fetch("images/images.txt").then((response) => {
+fetch(window.location.href + "/images/images.txt").then((response) => {
 	if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
 	return response.text();
 }).then((text) => fillStacks(text))
