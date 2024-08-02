@@ -13,6 +13,10 @@ html, body {
 	background: url("static.gif"), #000;
 }
 
+html.blk, body.blk {
+	background: #000;
+}
+
 a {
 	color: #fff;
 }
@@ -56,7 +60,17 @@ a {
 	align-items: center;
 	column-gap: 0.5in;
 	padding-left: 1in;
-	background-color: #000;
+	color: #fff;
+	background-color: #0000;
+	z-index: 100;
+
+	transition: height 0.15s ease;
+}
+
+html:not([data-scroll='0']) .bar {
+	height: 1in;
+	color: #fff;
+	background-color: #000f;
 }
 
 .bar h1 {
@@ -67,12 +81,18 @@ a {
 }
 
 .bar a {
+	color: inherit;
 	font-size: 18px;
 }
 
 #gallery {
+	/* position: relative; */
 	display: flex;
 	flex-flow: row nowrap;
+	/* gap: 15px; */
+	padding: 0in 1.5in;
+	padding-bottom: 2in;
+	background-color: #000;
 }
 
 #gallery-window {
@@ -99,7 +119,6 @@ a {
 	background-size: 102%;
 }
 
-
 #gp1 {
 	background-image: url("bg_live.jpg");
 }
@@ -112,18 +131,54 @@ a {
 	background-image: url("bg_experimental.jpg");
 }
 
+#loader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #000;
+	opacity: 1.0;
+	transition: opacity 0.5s ease;
+	z-index: 10;
+	/* mix-blend-mode: difference; */
+}
+
+#loader-progress {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: #fff;
+	opacity: 1.0;
+	transition: opacity 0.2s ease;
+	z-index: 1000;
+	pointer-events: none;
+	mix-blend-mode: difference;
+}
+  
+
+#loader span {
+	z-index: 100;
+}
 
 .stack {
 	display: flex;
 	flex-flow: column nowrap;
+	/* gap: 15px; */
+	height: fit-content;
 }
 
 #stack1 {
-	width: 50%;
+	width: 45%;
 }
 
 #stack2, #stack3 {
-	width: 25%;
+	width: 27.5%;
 }
 
 .stack img {
@@ -171,6 +226,12 @@ a {
 	margin: 0px;
 	padding: 1.5in 2in;
 	background-color: none;
+	position: relative;
+	z-index: 1;
+}
+
+body.blk .copyright {
+	background: url("static.gif"), #222;
 }
 
 .copyright div {
