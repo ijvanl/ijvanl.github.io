@@ -103,19 +103,21 @@ html:not([data-scroll='0']) .bar {
 	margin-bottom: -1.5in;
 }
 
-.gallery-page {
+.infobox div.gallery-page {
 	width: calc(100vw / 3);
 	min-height: calc(100vw / 3);
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
 	background-position: center;
 	background-size: 100%;
 	font-size: 16pt;
 	transition: background-size 0.05s;
+	padding-top: 0px;
 }
 
-.gallery-page:hover {
+.infobox div.gallery-page:hover {
 	background-size: 102%;
 }
 
@@ -211,7 +213,7 @@ html:not([data-scroll='0']) .bar {
 }
 
 .stack h1 {
-	font-size: 64pt;
+	font-size: 4.25vw;
 	font-weight: 200;
 	margin: 0px;
 	padding: 40px;
@@ -244,4 +246,150 @@ body.blk .copyright {
 #email {
 	font-weight: 900;
 	font-style: italic;
+}
+
+@media screen and (max-width: 1200px) {
+	.bar {
+		column-gap: 0.25in;
+		padding-left: 0.75in;
+		height: 1in;
+	}
+
+	.bar h1 {
+		font-size: 24px;
+	}
+
+	.bar a {
+		font-size: 15px;
+	}
+
+	#gallery {
+		padding: 0in 1.25in;
+	}
+
+	.stack h1 {
+		font-size: 4vw;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.box {
+		width: 100vw;
+	}
+
+	.hero {
+		background-position: top center;
+	}
+
+	.hero h1 {
+		font-size: 8vw;
+	}
+	
+	.hero a {
+		font-size: 24px;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.infobox {
+		padding: 1.25in 1in;
+	}
+
+	#gallery-window {
+		margin: 0in -1in;
+		margin-bottom: -1.25in;
+	}
+		
+	.infobox div.gallery-page {
+		padding-top: 0px;
+		font-size: 14pt;
+	}
+
+	#gallery {
+		padding: 0in 0in;
+	}
+
+	.stack h1 {
+		font-size: 5vw;
+	}
+}
+
+@media screen and (max-width: 750px) {
+	.hero {
+		background-image: url("hero_sml.jpg");
+		background-position: top center;
+	}
+
+	.infobox {
+		padding: 1in 0.5in;
+	}
+
+	.infobox h1 {
+		font-size: 10vw;
+		font-weight: 200;
+		margin: 0px;
+	}
+
+	.infobox div {
+		font-size: 13pt;
+	}
+
+	#gallery-window {
+		margin: 0in -0.5in;
+		margin-bottom: -1in;
+		flex-flow: column;
+	}
+		
+	.infobox div.gallery-page {
+		width: 100%;
+	}
+
+	.infobox li {
+		padding: 6px 0px;
+	}
+
+	.hero h1 {
+		font-size: 32pt;
+	}
+
+	.hero a {
+		font-size: 24px;
+		display: block;
+		margin: 6px 0px;
+	}
+
+	.hero a:not([href]) {
+		display: none;
+	}
+
+	.bar {
+		column-gap: 0.25in;
+		padding-left: 0.5in;
+	}
+
+	.bar h1 {
+		font-size: 24px;
+	}
+
+	.bar a:not(:has(h1)) {
+		display: none;
+	}
+
+	#gallery {
+		padding: 0in 0in;
+		flex-flow: column nowrap;
+	}
+
+	#stack1, #stack2, #stack3 {
+		width: 100%;
+	}
+
+	.stack h1 {
+		font-size: 5vw;
+		width: 100vw;
+	}
+
+	.copyright {
+		padding: 0.75in 1in;
+	}
 }
