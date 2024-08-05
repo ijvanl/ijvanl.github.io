@@ -30,6 +30,8 @@ async function fillStacks(text) {
 	var image_promises = [];
 	var loaded_images = 0;
 
+	document.body.style.overflow = "hidden";
+
 	for (var i = 0; i < files.length; i++) { 
 		image_promises.push(
 			loadImage(
@@ -57,6 +59,7 @@ async function fillStacks(text) {
 		}
 
 		setTimeout(() => {
+			document.body.style.overflow = "scroll";
 			loaderProgress.style.opacity = "0";
 			loader.style.opacity = "0";
 		}, 200);
