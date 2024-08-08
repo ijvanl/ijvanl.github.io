@@ -59,10 +59,15 @@ async function fillStacks(text) {
 		}
 
 		setTimeout(() => {
-			document.body.style.overflow = "scroll";
+			document.body.style.overflowY = "scroll";
 			loaderProgress.style.opacity = "0";
 			loader.style.opacity = "0";
 		}, 200);
+
+		setTimeout(() => {
+			loaderProgress.style.display = "none";
+			loader.style.display = "none";
+		}, 400);
 	});
 }
 
