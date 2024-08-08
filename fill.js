@@ -67,7 +67,7 @@ async function fillStacks(text) {
 		setTimeout(() => {
 			loaderProgress.style.display = "none";
 			loader.style.display = "none";
-		}, 400);
+		}, 700);
 	});
 }
 
