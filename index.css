@@ -220,6 +220,10 @@ html:not([data-scroll='0']) .bar {
 	background-color: #000;
 }
 
+.stack img:hover {
+	transform: scale(102%);
+}
+
 .pronouns {
 	opacity: 0.6;
 }
