@@ -14,7 +14,7 @@ function loadImage(url, onSingleLoad) {
 		const image = new Image();
 		image.addEventListener('load', () => { onSingleLoad(); resolve(image) });
 		image.src = url; // begins the image loading process
-		image.onclick = `clickImage("${url}")`;
+		image.onclick = () => clickImage(url);
 	});
 }
 
