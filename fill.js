@@ -24,12 +24,14 @@ function clickImage(url) {
 	let backdrop = document.getElementById("clickBackdrop");
 	backdrop.classList.remove("hidden");
 	backdrop.classList.add("shown");
+	document.body.classList.add("clicked");
 }
 
 function putAwayImage() {
 	let backdrop = document.getElementById("clickBackdrop");
 	backdrop.classList.remove("shown");
 	backdrop.classList.add("hidden");
+	document.body.classList.remove("clicked");
 }
 
 async function fillStacks(text) {
