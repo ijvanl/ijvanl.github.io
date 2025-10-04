@@ -248,6 +248,26 @@ body.blk .copyright {
 	font-style: italic;
 }
 
+#clickBackdrop.hidden {
+	display: none;
+}
+
+#clickBackdrop.shown {
+	display: flex;
+	justify-content: center; /* Centers horizontally */
+	align-items: center; /* Centers vertically */
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	background: #000;
+}
+
+#clickImage {
+	height: 90vmin;
+}
+
 @media screen and (max-width: 1200px) {
 	.bar {
 		column-gap: 0.25in;

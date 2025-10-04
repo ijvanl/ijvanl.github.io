@@ -14,7 +14,22 @@ function loadImage(url, onSingleLoad) {
 		const image = new Image();
 		image.addEventListener('load', () => { onSingleLoad(); resolve(image) });
 		image.src = url; // begins the image loading process
+		image.onclick = `clickImage("${url}")`;
 	});
+}
+
+function clickImage(url) {
+	let image = document.getElementById("clickImage");
+	image.src = url;
+	let backdrop = document.getElementById("clickBackdrop");
+	backdrop.classList.remove("hidden");
+	backdrop.classList.add("shown");
+}
+
+function putAwayImage() {
+	let backdrop = document.getElementById("clickBackdrop");
+	backdrop.classList.remove("shown");
+	backdrop.classList.add("hidden");
 }
 
 async function fillStacks(text) {
