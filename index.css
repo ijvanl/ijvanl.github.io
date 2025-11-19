@@ -1,424 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap');
-
 * {
 	box-sizing: border-box;
 }
 
 html, body {
-	margin: 0px;
-	padding: 0px;
 	min-height: 100vh;
-	font-family: "JetBrains Mono", monospace;
-	color: #fff;
-	background: url("static.gif"), #000;
+	margin: 0;
 }
 
-html.blk, body.blk {
-	background: #000;
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1in;
+}
+
+.heroBox {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: center;
+}
+
+.heroBox .left {
+	width: 70%;
+	/*font-family: system-ui, 'Helvetica Neue', 'Helvetica', sans-serif;*/
+	font-family: 'HelveticaNowText', 'Helvetica Neue', 'Helvetica', sans-serif;
+	font-size: 18pt;
+	font-weight: 500;
+	align-items: left;
+}
+
+.heroBox .right {
+	width: 30%;
 }
 
 a {
-	color: #fff;
+	text-decoration: none;
+	color: #888;
 }
 
-.hero {
-	width: 100vw;
-	height: 100vh;
-	background-image: url("hero.jpg");
-	background-size: cover;
-	background-position: top right;
+a:hover {
+	color: #444;
 }
 
-.hero .box {
-	padding: 50px 60px;
-}
-
-.hero h1 {
-	font-size: 100px;
-	font-weight: 200;
-	margin: 0px;
-	padding: 0px;
-}
-
-.hero a {
-	font-size: 32px;
-}
-
-.hero * {
-	background-color: #000;
-	width: fit-content;
-}
-
-.bar {
-	width: 100vw;
-	height: 1.5in;
-	position: sticky;
-	top: 0;
-	left: 0;
-	display: flex;
-	flex-flow: row nowrap;
-	align-items: center;
-	column-gap: 0.5in;
-	padding-left: 1in;
-	color: #fff;
-	background-color: #0000;
-	z-index: 100;
-
-	transition: height 0.15s ease;
-}
-
-html:not([data-scroll='0']) .bar {
-	height: 1in;
-	color: #fff;
-	background-color: #000f;
-}
-
-.bar h1 {
-	font-size: 32px;
-	font-weight: 200;
-	margin: 0px;
-	padding: 0px;
-}
-
-.bar a {
-	color: inherit;
-	font-size: 18px;
-}
-
-#gallery {
-	/* position: relative; */
-	display: flex;
-	flex-flow: row nowrap;
-	/* gap: 15px; */
-	padding: 0in 1.5in;
-	padding-bottom: 2in;
-	background-color: #000;
-}
-
-#gallery-window {
-	display: flex;
-	flex-flow: row nowrap;
-	width: 100vw;
-	margin: 0in -2in;
-	margin-bottom: -1.5in;
-}
-
-.infobox div.gallery-page {
-	width: calc(100vw / 3);
-	min-height: calc(100vw / 3);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	background-position: center;
-	background-size: 100%;
-	font-size: 16pt;
-	transition: background-size 0.05s;
-	padding-top: 0px;
-}
-
-.infobox div.gallery-page:hover {
-	background-size: 102%;
-}
-
-#gp1 {
-	background-image: url("bg_live.jpg");
-}
-
-#gp2 {
-	background-image: url("bg_gallery.jpg");
-}
-
-#gp3 {
-	background-image: url("bg_experimental.jpg");
-}
-
-#loader {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: #000;
-	opacity: 1.0;
-	transition: opacity 0.5s ease;
-	z-index: 10;
-	/* mix-blend-mode: difference; */
-}
-
-#loader-progress {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 100vw;
-	height: 100vh;
-	background-color: #fff;
-	opacity: 1.0;
-	transition: opacity 0.2s ease;
-	z-index: 1000;
-	pointer-events: none;
-	mix-blend-mode: difference;
-}
-  
-
-#loader span {
-	z-index: 100;
-}
-
-.stack {
-	display: flex;
-	flex-flow: column nowrap;
-	/* gap: 15px; */
-	height: fit-content;
-}
-
-#stack1 {
-	width: 45%;
-}
-
-#stack2, #stack3 {
-	width: 27.5%;
-}
-
-.stack img {
-	width: 100%;
-}
-
-.infobox {
-	margin: 0px;
-	padding: 1.5in 2in;
-}
-
-.infoblk {
-	background-color: #000;
-}
-
-.infogrey {
-	background-color: #111;
-}
-
-
-.infobox h1 {
-	font-size: 64pt;
-	font-weight: 200;
-	margin: 0px;
-}
-
-.infobox div {
-	padding-top: 0.5in;
-	font-size: 16pt;
-}
-
-.stack h1 {
-	font-size: 4.25vw;
-	font-weight: 200;
-	margin: 0px;
-	padding: 40px;
-	background-color: #000;
-}
-
-.stack img:hover {
-	transform: scale(102%);
-}
-
-.pronouns {
-	opacity: 0.6;
-}
-
-.copyright {
-	margin: 0px;
-	padding: 1.5in 2in;
-	background-color: none;
-	position: relative;
-	z-index: 1;
-}
-
-body.blk .copyright {
-	background: url("static.gif"), #222;
-}
-
-.copyright div {
-	color: #fff;
-	opacity: 0.8;
-	text-align: center;
-	font-size: 14pt;
-}
-
-#email {
-	font-weight: 900;
-	font-style: italic;
-}
-
-#clickBackdrop.hidden {
-	display: none;
-}
-
-#clickBackdrop.shown {
-	display: flex;
-	justify-content: center; /* Centers horizontally */
-	align-items: center; /* Centers vertically */
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: 100vh;
-	width: 100vw;
-	background: #000;
-	z-index: 1000000;
-}
-
-#clickImage {
-	height: 90vmin;
-}
-
-body.clicked {
-	overflow: hidden;
-}
-
-@media screen and (max-width: 1200px) {
-	.bar {
-		column-gap: 0.25in;
-		padding-left: 0.75in;
-		height: 1in;
-	}
-
-	.bar h1 {
-		font-size: 24px;
-	}
-
-	.bar a {
-		font-size: 15px;
-	}
-
-	#gallery {
-		padding: 0in 1.25in;
-	}
-
-	.stack h1 {
-		font-size: 4vw;
-	}
-}
-
-@media screen and (max-width: 1024px) {
-	.box {
-		width: 100vw;
-	}
-
-	.hero {
-		background-position: top center;
-	}
-
-	.hero h1 {
-		font-size: 8vw;
-	}
-	
-	.hero a {
-		font-size: 24px;
-	}
-}
-
-@media screen and (max-width: 900px) {
-	.infobox {
-		padding: 1.25in 1in;
-	}
-
-	#gallery-window {
-		margin: 0in -1in;
-		margin-bottom: -1.25in;
-	}
-		
-	.infobox div.gallery-page {
-		padding-top: 0px;
-		font-size: 14pt;
-	}
-
-	#gallery {
-		padding: 0in 0in;
-	}
-
-	.stack h1 {
-		font-size: 5vw;
-	}
-}
-
-@media screen and (max-width: 750px) {
-	.hero {
-		background-image: url("hero_sml.jpg");
-		background-position: top center;
-	}
-
-	.infobox {
-		padding: 1in 0.5in;
-	}
-
-	.infobox h1 {
-		font-size: 10vw;
-		font-weight: 200;
-		margin: 0px;
-	}
-
-	.infobox div {
-		font-size: 13pt;
-	}
-
-	#gallery-window {
-		margin: 0in -0.5in;
-		margin-bottom: -1in;
-		flex-flow: column;
-	}
-		
-	.infobox div.gallery-page {
-		width: 100%;
-	}
-
-	.infobox li {
-		padding: 6px 0px;
-	}
-
-	.hero h1 {
-		font-size: 32pt;
-	}
-
-	.hero a {
-		font-size: 24px;
-		display: block;
-		margin: 6px 0px;
-	}
-
-	.hero a:not([href]) {
-		display: none;
-	}
-
-	.bar {
-		column-gap: 0.25in;
-		padding-left: 0.5in;
-	}
-
-	.bar h1 {
-		font-size: 24px;
-	}
-
-	.bar a:not(:has(h1)) {
-		display: none;
-	}
-
-	#gallery {
-		padding: 0in 0in;
-		flex-flow: column nowrap;
-	}
-
-	#stack1, #stack2, #stack3 {
-		width: 100%;
-	}
-
-	.stack h1 {
-		font-size: 5vw;
-		width: 100vw;
-	}
-
-	.copyright {
-		padding: 0.75in 1in;
-	}
+hr {
+	width: 2in;
+	border: #000 solid 1.5px;
+	margin: 0.25in 0px;
 }
