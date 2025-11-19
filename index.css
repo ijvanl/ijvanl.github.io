@@ -18,7 +18,33 @@ body {
 	display: flex;
 	flex-flow: row nowrap;
 	align-items: center;
-	justify-content: center;
+	justify-content: stretch;
+	width: 90%;
+}
+
+@media only screen and (max-width: 550px) {
+	body {
+		padding: 0.5in;
+	}
+
+	.heroBox {
+		flex-flow: column nowrap;
+	}
+
+	.heroBox .left {
+		width: 100% !important;
+		text-align: center;
+	}
+
+	.heroBox .right {
+		margin-left: 0px !important;
+		margin-top: 1in;
+		width: 60% !important;
+	}
+
+	hr {
+		margin: 0.25in auto !important;
+	}
 }
 
 .heroBox .left {
@@ -32,6 +58,7 @@ body {
 
 .heroBox .right {
 	width: 30%;
+	margin-left: 20%;
 }
 
 a {
