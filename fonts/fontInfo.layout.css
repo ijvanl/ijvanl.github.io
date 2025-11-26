@@ -1,0 +1,31 @@
+.fontInfo {
+	margin-top: 1em;
+}
+
+.fontInfo::after {
+	content: "";
+	/*width: 2in;*/
+	width: 100%;
+	display: block;
+	height: 0px;
+	border-bottom: #000 solid 1px;
+}
+
+.fontInfo .font {
+	display: block;
+	font-size: 18pt;
+	color: #000;
+	transition: font-weight 0.3s ease-in-out;
+}
+
+.fontInfo:hover .font {
+	font-weight: 700;
+}
+
+.fontHero .fontInfo {
+	margin-top: 0.5in;
+}
+
+.fontHero .fontInfo .font {
+	font-size: 36pt;
+}

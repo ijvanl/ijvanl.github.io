@@ -1,0 +1,75 @@
+body {
+	padding: 0px;
+}
+
+.box {
+	width: 100vw;
+	display: flex;
+	flex-flow: column;
+	padding: 1in;
+	background-color: var(--background);
+	color: var(--text);
+}
+
+.box.split {
+	flex-flow: row;
+	padding: 0in;
+}
+
+.box.split .lhs {
+	width: 50vw;
+	padding: 1in;
+}
+
+.box.split .rhs {
+	width: 50vw;
+	padding: 1in;
+}
+
+.box.split .detail {
+	background-color: #fff;
+	color: var(--text);
+	padding: 1in 2in;
+}
+
+.box img {
+	width: 100%;
+}
+
+.box.split .detail .caption {
+	width: 75%;
+	margin: 2em auto;
+	text-align: center;
+}
+
+.box.hero {
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--accent);
+	color: var(--background);
+}
+
+.box .body {
+	font-size: 14pt;
+	text-align: justify;
+}
+
+.caption {
+	opacity: 0.8;
+	font-style: italic;
+}
+
+
+.accent {
+	background-color: var(--accent);
+	color: var(--background);
+}
+
+.grey {
+	background-color: #eee;
+	color: #000;
+}
+
+.box.hero .title { font-size: 64pt; }
+.amarna .box.hero .title { font-weight: 100; }

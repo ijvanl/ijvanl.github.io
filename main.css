@@ -1,0 +1,46 @@
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	min-height: 100vh;
+	margin: 0;
+	font-family: 'HelveticaNowText', 'Helvetica Neue', 'Helvetica', sans-serif;
+}
+
+h1, h2, h3 {
+	margin-top: 0;
+}
+
+a {
+	text-decoration: none;
+	color: #888;
+}
+
+a:hover {
+	color: #444;
+}
+
+hr {
+	width: 2in;
+	border: #000 solid 1.5px;
+	margin: 0.25in 0px;
+}
+
+.bug {
+	display: block;
+	position: fixed;
+	bottom: 0.25in;
+	right: 0.25in;
+	width: 0.5in;
+	height: 0.5in;
+	/*pointer-events: none;*/
+	background-image: url("/assets/logomark.svg");
+	background-size: contain;
+}
+
+/* font info */
+.amarna { font-family: "Amarna" !important; }
+.anvers { font-family: "Anvers" !important; }
+.edifice { font-family: "Edifice Proof" !important; }
+.vizor { font-family: "Vizor" !important; font-weight: 200; }
