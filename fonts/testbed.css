@@ -1,0 +1,117 @@
+.testbedContainer {
+	border-bottom: 1px solid currentColor;
+	margin-bottom: 20px;
+}
+
+.testbedContainer .infoBox {
+	font-family: 'HelveticaNowText', 'Helvetica Neue', 'Helvetica', sans-serif;
+	font-size: 11pt;
+}
+
+.testbedContainer .infoTitle {
+	font-weight: 700;
+}
+
+.testbedContainer .infoTitle:not(:first-child) {
+	border-left: 1px solid currentColor;
+	padding-left: 10px;
+}
+
+.testbedContainer .axisContainer {
+	display: inline-block;
+	width: fit-content;
+	height: fit-content;
+}
+
+.testbedContainer .axisContainer > *, .infoTitle {
+	vertical-align: middle;
+	margin-right: 10px;
+}
+
+.testbedContainer .axisContainer > input[type="number"] {
+	width: 50px;
+	appearance: none;
+	background-color: inherit;
+	color: currentColor;
+	border: none;
+	border-bottom: 1px solid currentColor;
+	font-family: inherit;
+	font-size: 11pt;
+}
+
+.testbedContainer input::-webkit-inner-spin-button, .testbedContainer input[type="range"] {
+	appearance: none;
+}
+
+.testbedContainer input[type="range"] {
+	-webkit-appearance: none;
+	appearance: none;
+	color: currentColor;
+	background-color: inherit;
+	height: 15px;
+}
+
+.testbedContainer input[type="range"]::-webkit-slider-runnable-track {
+	height: 2px;
+	background-color: currentColor;
+	box-sizing: border-box;
+	vertical-align: middle;
+}
+
+.testbedContainer input[type="range"]::-webkit-slider-thumb {
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	appearance: none;
+	width: 15px;
+	height: 15px;
+	background-color: var(--accent);
+	border: 1px solid var(--background);
+	border-radius: 50%;
+	cursor: pointer;
+	vertical-align: middle;
+	transform: translateY(-6.5px);
+}
+
+.testbedContainer input[type="range"]::-webkit-slider-thumb:hover {
+	background-color: var(--background);
+	border: 1px solid var(--accent);
+}
+
+.testbedContainer input[type="range"]::-moz-range-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 15px;
+	height: 15px;
+	background-color: var(--accent);
+	border: 1px solid var(--background);
+	border-radius: 15px;
+	cursor: pointer;
+	vertical-align: middle;
+	transform: translateY(-50%);
+}
+
+.testbedContainer input[type="range"]::-moz-range-thumb:hover {
+	background-color: var(--background);
+	border: 1px solid var(--accent);
+}
+
+.testbedContainer input[type="checkbox"] {
+	appearance: none;
+	display: none;
+}
+
+.testbedContainer .featureContainer span:has(input[type="checkbox"]) {
+	border-radius: 3px;
+	padding: 0px 5px;
+	margin-right: 3px;
+	vertical-align: middle;
+}
+
+.testbedContainer .featureContainer span:has(input[type="checkbox"]):hover {
+	background-color: rgb(from currentColor r g b / 0.2);
+}
+
+.testbedContainer .featureContainer span:has(input[type="checkbox"]:checked) {
+	background-color: rgb(from currentColor r g b / 0.5);
+}
+

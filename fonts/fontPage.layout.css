@@ -16,12 +16,7 @@ body {
 	padding: 0in;
 }
 
-.box.split .lhs {
-	width: 50vw;
-	padding: 1in;
-}
-
-.box.split .rhs {
+.box.split .lhs, .box.split .rhs {
 	width: 50vw;
 	padding: 1in;
 }
@@ -30,6 +25,14 @@ body {
 	background-color: #fff;
 	color: var(--text);
 	padding: 1in 2in;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: center;
+}
+
+.box.split .testbedBox {
+	padding: 0.5in;
 }
 
 .box img {
@@ -48,11 +51,14 @@ body {
 	justify-content: center;
 	background-color: var(--accent);
 	color: var(--background);
+	background-size: cover;
+	background-blend-mode: color;
 }
 
-.box .body {
+.box.body {
 	font-size: 14pt;
 	text-align: justify;
+	padding: 1in 15vw;
 }
 
 .caption {
@@ -71,5 +77,5 @@ body {
 	color: #000;
 }
 
-.box.hero .title { font-size: 64pt; }
+.box.hero .title { font-size: 144pt; }
 .amarna .box.hero .title { font-weight: 100; }

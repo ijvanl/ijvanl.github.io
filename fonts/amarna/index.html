@@ -17,57 +17,75 @@
 		<link rel="stylesheet" href="/main.css">
 		<link rel="stylesheet" href="/fonts/fontInfo.layout.css">
 		<link rel="stylesheet" href="/fonts/fontPage.layout.css">
+		<script src="/fonts/testbed.js"></script>
 		<style>
 			:root {
-				--accent: rgb(0, 66, 37);
-				--background: rgb(255, 246, 218);
-				--text: rgb(50, 30, 0);
+				--accent: rgb(7, 62, 0);
+				--background: rgb(255, 251, 237);
+				--text: rgb(7, 62, 0);
 			}
 		</style>
 	</head>
 	<body class="amarna">
-		<div class="box hero">
+		<div class="box hero" style="background-image: url(/assets/images/amarnaHero.gif);">
 			<div class="title">amarna</div>
 			<div class="subtitle">by Isht&amacr;r van Looy</div>
 		</div>
 
-		<div class="box split">
-			<div class="lhs body">
-				<h1>Design information</h1>
-				<p>
-				<b>Amarna</b> is a semi-glyphic humanist sans-serif typeface, designed for dual use in both titling and text.
-				It derives inspiration from the wonderfully earthy, almost terminally groovy typefaces coming out of the United Kingdom from the 1920s up to the &lsquo;40s, most notably Berthold Wolpe&rsquo;s <a href="https://en.wikipedia.org/wiki/Albertus_(typeface)">Albertus</a> (Monotype, 1932).
-				</p>
-				<p>
-				There&rsquo;s something that&rsquo;s just so appealing to me about the typefaces of this era — it&rsquo;s clear to me that at this point in time, the novelty of the sans-serif typeface had not quite worn off.
-				Looking at these early typefaces, it still feels like the designers of the era, used to drawing the sinuous curves and high-contrast strokes of the serif typefaces of the day, were still working out the kinks.
-				</p>
-				<p>
-				Albertus, in particular — there&rsquo;s something really nice about the very odd juxtaposition between its grandiose, old-fashioned capitals and their haughty proportions, compared to the tall, blocky and amicable lower-case letterforms, with their low stroke contrast, high x-height and wide-open apertures. And yet, somehow, those two extremes are made to complement each other beautifully.
-				</p>
-				<p>
-				I wanted to capture some of this dissonance in Amarna, while tempering it slightly with some more modern elements, bringing it up to speed with the demands of current-day designers.
-				I&rsquo;ve attempted to strike a balance between the old-fashioned proportions of typefaces like Albertus and the more uniform proportions that are idiomatic of modern sans-serif typefaces. Compared to Albertus, I&rsquo;ve also made the lower-case a little more slender, a little more readable, allowing Amarna to be used more easily for body text typesetting (I've always found long strings of mixed-case text set in Albertus hard to read).
-				Otherwise, I&rsquo;ve tried to maintain as much as I can of Albertus and its ilk.
-				</p>
-				<p>
-				That era produced some of my favourite typefaces; I can only hope that Amarna is a fitting tribute.
-				</p>
-			</div>
-			<div class="rhs detail">
-				<img src="assets/demo1.svg">
-				<div class="caption"><b>Amarna, 100 weight</b> &mdash; wide capitals have an aspect ratio just shy of 1:1, while narrow capitals&rsquo; aspect ratios tend to hover around 80%, compared to Albertus&rsquo; nearly 1:2 aspect ratio for narrow capitals.</div>
-			</div>
+		<div class="box body">
+			<h1>Design information</h1>
+			<p>
+			<b>Amarna</b> is a semi-glyphic humanist sans-serif typeface, designed for dual use in both titling and text.
+			It derives inspiration from the wonderfully earthy, almost terminally groovy typefaces coming out of the United Kingdom from the 1920s up to the &lsquo;40s, most notably Berthold Wolpe&rsquo;s <a href="https://en.wikipedia.org/wiki/Albertus_(typeface)">Albertus</a> (Monotype, 1932).
+			</p>
+			<p>
+			There&rsquo;s something that&rsquo;s just so appealing to me about the typefaces of this era — it&rsquo;s clear to me that at this point in time, the novelty of the sans-serif typeface had not quite worn off.
+			Looking at these early typefaces, it still feels like the designers of the era, used to drawing the sinuous curves and high-contrast strokes of the serif typefaces of the day, were still working out the kinks.
+			</p>
+			<p>
+			Albertus, in particular — there&rsquo;s something really nice about the very odd juxtaposition between its grandiose, old-fashioned capitals and their haughty proportions, compared to the tall, blocky and amicable lower-case letterforms, with their low stroke contrast, high x-height and wide-open apertures. And yet, somehow, those two extremes are made to complement each other beautifully.
+			</p>
+			<p>
+			I wanted to capture some of this dissonance in Amarna, while tempering it slightly with some more modern elements, bringing it up to speed with the demands of current-day designers.
+			I&rsquo;ve attempted to strike a balance between the old-fashioned proportions of typefaces like Albertus and the more uniform proportions that are idiomatic of modern sans-serif typefaces. Compared to Albertus, I&rsquo;ve also made the lower-case a little more slender, a little more readable, allowing Amarna to be used more easily for body text typesetting (I've always found long strings of mixed-case text set in Albertus hard to read).
+			Otherwise, I&rsquo;ve tried to maintain as much as I can of Albertus and its ilk.
+			</p>
+			<p>
+			That era produced some of my favourite typefaces; I can only hope that Amarna is a fitting tribute.
+			</p>
 		</div>
 
-		<div class="box split">
-			<div class="lhs detail">
-				<img src="assets/demo2.svg">
-				<div class="caption"><b>Amarna, 400 weight</b> &mdash; Any font worth its salt referencing Albertus should include an uncial e alternate, in reference to The Prisoner.</div>
-			</div>
-			<div class="rhs accent">
-				<h1>Testbed</h1>
-			</div>
+		<div class="box accent testbedBox">
+			<font-testbed family="Amarna" size="224pt"
+			axes="wght ital" minimums="100 0" maximums="700 1" defaults="100 0"
+			features="ss01 ss02" featureNames="ss01 ss02">
+				Bivalve
+			</font-testbed>
+			<font-testbed family="Amarna" size="144pt"
+			axes="wght ital" minimums="100 0" maximums="700 1" defaults="250 0"
+			features="ss01 ss02" featureNames="ss01 ss02">
+				Vertebrate
+			</font-testbed>
+			<font-testbed family="Amarna" size="104pt"
+			axes="wght ital" minimums="100 0" maximums="700 1" defaults="400 0"
+			features="ss01 ss02" featureNames="ss01 ss02">
+				Carboniferous
+			</font-testbed>
+			<font-testbed family="Amarna" size="72pt"
+			axes="wght ital" minimums="100 0" maximums="700 1" defaults="500 0"
+			features="ss01 ss02" featureNames="ss01 ss02">
+				Microarchaeological
+			</font-testbed>
+			<font-testbed family="Amarna" size="108pt"
+			axes="wght ital" minimums="100 0" maximums="700 1" defaults="600 0"
+			features="ss01 ss02" featureNames="ss01 ss02">
+				Brachiopodes
+			</font-testbed>
+			<font-testbed family="Amarna" size="144pt"
+			axes="wght ital" minimums="100 0" maximums="700 1" defaults="700 0"
+			features="ss01 ss02" featureNames="ss01 ss02">
+				Carbonize
+			</font-testbed>
 		</div>
 
 		<div class="box" style="background-color: #eee;">

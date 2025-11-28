@@ -13,12 +13,13 @@ h1, h2, h3 {
 }
 
 a {
+	color: inherit;
 	text-decoration: none;
-	color: #888;
+	opacity: 0.5;
 }
 
 a:hover {
-	color: #444;
+	opacity: 0.75;
 }
 
 hr {
