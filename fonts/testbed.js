@@ -48,6 +48,8 @@ class FontTestbed extends HTMLElement {
 
 		this.features = this.hasAttribute("features") ? this.getAttribute("features").split(" ") : [];
 
+		this.textColumns = this.hasAttribute("columns") ? this.getAttribute("columns") : 1;
+
 		this.axisValues = {};
 		this.featureValues = {};
 
@@ -168,6 +170,7 @@ class FontTestbed extends HTMLElement {
 		this.textBox.setAttribute("class", "textBox");
 		this.textBox.style.fontFamily = this.getAttribute("family");
 		this.textBox.style.fontSize = this.getAttribute("size");
+		this.textBox.style.columnCount = this.textColumns;
 		this.textBox.setAttribute("contenteditable", "plaintext-only");
 
 		
