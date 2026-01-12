@@ -1,4 +1,21 @@
 @font-face {
+	font-family: 'Zero Sans';
+	src: url('ZeroSans.woff2') format('woff2-variations');
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Zero Sans';
+	src: url('ZeroSans-Italic.woff2') format('woff2-variations');
+	font-style: italic;
+	font-weight: 100 900;
+	font-display: swap;
+}
+
+/*
+@font-face {
     font-family: 'HelveticaNowText';
     src: url('HelveticaNowText-Regular.woff2') format('woff2'),
         url('HelveticaNowText-Regular.woff') format('woff');
@@ -51,4 +68,4 @@
     font-style: italic;
     font-display: swap;
 }
-
+*/

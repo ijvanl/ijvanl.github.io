@@ -3,8 +3,8 @@ function clamp(number, min, max) {
 }
 
 class FontTestbed extends HTMLElement {
-	static observedAttributes = ["family", "size", "axes", "minimums", "maximums", "features"];
-	
+	static observedAttributes = ["family", "size", "axes", "minimums", "maximums", "features", "featureNames"];
+
 	constructor() {
 		super();
 	}
@@ -47,6 +47,7 @@ class FontTestbed extends HTMLElement {
 		this.axisDefaults = this.hasAttribute("defaults") ? this.getAttribute("defaults").split(" ") : [];
 
 		this.features = this.hasAttribute("features") ? this.getAttribute("features").split(" ") : [];
+		this.featureNames = this.hasAttribute("featureNames") ? this.getAttribute("featureNames").split(",") : [];
 
 		this.textColumns = this.hasAttribute("columns") ? this.getAttribute("columns") : 1;
 
@@ -60,7 +61,7 @@ class FontTestbed extends HTMLElement {
 
 		this.infoBox = document.createElement("span");
 		this.infoBox.setAttribute("class", "infoBox");
-		
+
 
 		let sizeContainer = document.createElement("span");
 		sizeContainer.setAttribute("class", "axisContainer");
@@ -150,12 +151,12 @@ class FontTestbed extends HTMLElement {
 			featureContainer.setAttribute("class", "featureContainer");
 
 			let featureLabel = document.createElement("span");
-			featureLabel.textContent = this.features[feature];
+			featureLabel.textContent = this.featureNames[feature];
 
 			let featureCheckbox = document.createElement("input");
 			featureCheckbox.setAttribute("type", "checkbox");
 			featureLabel.appendChild(featureCheckbox);
-			
+
 			featureLabel.addEventListener("click", () => {
 				featureCheckbox.checked = !featureCheckbox.checked;
 				this.changeFeatureValue(this.features[feature], featureCheckbox.checked);
@@ -173,7 +174,7 @@ class FontTestbed extends HTMLElement {
 		this.textBox.style.columnCount = this.textColumns;
 		this.textBox.setAttribute("contenteditable", "plaintext-only");
 
-		
+
 		setTimeout(() => {
 			this.textBox.textContent = this.textContent.trim();
 		}, 10);
@@ -182,8 +183,8 @@ class FontTestbed extends HTMLElement {
 		testbedContainer.appendChild(this.textBox);
 
 		const linkElem = document.createElement("link");
-    	linkElem.setAttribute("rel", "stylesheet");
-    	linkElem.setAttribute("href", "/fonts/testbed.css");
+		linkElem.setAttribute("rel", "stylesheet");
+		linkElem.setAttribute("href", "/fonts/testbed.css");
 		this.shadow.appendChild(linkElem);
 
 		this.shadow.appendChild(testbedContainer);

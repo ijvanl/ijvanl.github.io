@@ -2,6 +2,23 @@ body {
 	padding: 0px;
 }
 
+.layoutImage {
+	display: block;
+	width: 100vw;
+	min-height: 100vh;
+	background-color: var(--background);
+}
+
+.layoutImage img {
+	display: block;
+	height: 100vmin;
+	margin: 0 auto;
+}
+
+.layoutImage.accent {
+	background-color: var(--accent);
+}
+
 .box {
 	width: 100vw;
 	display: flex;
@@ -16,7 +33,8 @@ body {
 	padding: 0in;
 }
 
-.box.split .lhs, .box.split .rhs {
+.box.split .lhs,
+.box.split .rhs {
 	width: 50vw;
 	padding: 1in;
 }
@@ -77,5 +95,10 @@ body {
 	color: #000;
 }
 
-.box.hero .title { font-size: 144pt; }
-.amarna .box.hero .title { font-weight: 100; }
+.box.hero .title {
+	font-size: 144pt;
+}
+
+.amarna .box.hero .title {
+	font-weight: 100;
+}

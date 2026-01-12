@@ -4,7 +4,7 @@
 }
 
 .testbedContainer .infoBox {
-	font-family: 'HelveticaNowText', 'Helvetica Neue', 'Helvetica', sans-serif;
+	font-family: 'Zero Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
 	font-size: 11pt;
 }
 
@@ -23,12 +23,13 @@
 	height: fit-content;
 }
 
-.testbedContainer .axisContainer > *, .infoTitle {
+.testbedContainer .axisContainer>*,
+.infoTitle {
 	vertical-align: middle;
 	margin-right: 10px;
 }
 
-.testbedContainer .axisContainer > input[type="number"] {
+.testbedContainer .axisContainer>input[type="number"] {
 	width: 50px;
 	appearance: none;
 	background-color: inherit;
@@ -39,7 +40,8 @@
 	font-size: 11pt;
 }
 
-.testbedContainer input::-webkit-inner-spin-button, .testbedContainer input[type="range"] {
+.testbedContainer input::-webkit-inner-spin-button,
+.testbedContainer input[type="range"] {
 	appearance: none;
 }
 
