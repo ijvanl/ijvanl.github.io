@@ -176,7 +176,7 @@ class FontTestbed extends HTMLElement {
 
 
 		setTimeout(() => {
-			this.textBox.textContent = this.textContent.trim();
+			this.textBox.textContent = this.textContent.trim().replace(/\s+/g, ' ');
 		}, 10);
 
 		testbedContainer.appendChild(this.infoBox);
