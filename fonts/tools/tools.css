@@ -4,7 +4,7 @@
 }
 
 .testbedContainer .infoBox {
-	font-family: 'Zero Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
+	font-family: "Zero Sans", 'Helvetica Neue', 'Helvetica', sans-serif;
 	font-size: 11pt;
 }
 
@@ -121,4 +121,10 @@
 	column-gap: 15px;
 	text-align: justify;
 	margin: 15px 0px;
+}
+
+@media (width <= 1000px) {
+	.testbedContainer .textBox {
+		column-count: 1 !important;
+	}
 }

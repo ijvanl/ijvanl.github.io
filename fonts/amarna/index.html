@@ -18,7 +18,19 @@
 	<link rel="stylesheet" href="/main.css">
 	<link rel="stylesheet" href="/fonts/fontInfo.layout.css">
 	<link rel="stylesheet" href="/fonts/fontPage.layout.css">
-	<script src="/fonts/testbed.js"></script>
+	
+	<ift-font-meta font="Amarna">
+		<axis tag="wght" min="100" max="700" default="">Weight</axis>
+		<axis tag="ital" min="0" max="1">Italic</axis>
+		<feature tag="ordn">Ordinals</feature>
+		<feature tag="ss01">Uncial e</feature>
+		<feature tag="ss02">Tailed U</feature>
+	</ift-font-meta>
+
+	<link rel="stylesheet" href="/fonts/tools/tools.js">
+	<script src="/fonts/tools/meta.js"></script>
+	<script src="/fonts/tools/testbed.js"></script>
+	
 	<style>
 		:root {
 			--accent: rgb(7, 62, 0);
@@ -71,32 +83,14 @@
 	</div>
 
 	<div class="box accent testbedBox">
-		<font-testbed family="Amarna" size="224pt" axes="wght ital" minimums="100 0" maximums="700 1" defaults="100 0"
-			features="ss01 ss02" featureNames="Uncial e,Tailed U">
-			Bivalve
-		</font-testbed>
-		<font-testbed family="Amarna" size="168pt" axes="wght ital" minimums="100 0" maximums="700 1" defaults="250 0"
-			features="ss01 ss02" featureNames="Uncial e,Tailed U">
-			Ungulate
-		</font-testbed>
-		<font-testbed family="Amarna" size="104pt" axes="wght ital" minimums="100 0" maximums="700 1" defaults="400 0"
-			features="ss01 ss02" featureNames="Uncial e,Tailed U">
-			Carboniferous
-		</font-testbed>
-		<font-testbed family="Amarna" size="72pt" axes="wght ital" minimums="100 0" maximums="700 1" defaults="500 0"
-			features="ss01 ss02" featureNames="Uncial e,Tailed U">
-			Microarchaeological
-		</font-testbed>
-		<font-testbed family="Amarna" size="108pt" axes="wght ital" minimums="100 0" maximums="700 1" defaults="600 0"
-			features="ss01 ss02" featureNames="Uncial e,Tailed U">
-			Brachiopodes
-		</font-testbed>
-		<font-testbed family="Amarna" size="144pt" axes="wght ital" minimums="100 0" maximums="700 1" defaults="700 0"
-			features="ss01 ss02" featureNames="Uncial e,Tailed U">
-			Carbonize
-		</font-testbed>
-		<font-testbed family="Amarna" size="12pt" axes="wght ital" minimums="100 0" maximums="700 1" defaults="300 0"
-			features="ss01 ss02" featureNames="Uncial e,Tailed U" columns="3">
+		<ift-testbed font-name="Amarna" axis-wght="100" axis-ital="0">Bivalve</ift-testbed>
+		<ift-testbed font-name="Amarna" axis-wght="250" axis-ital="0">Ungulate</ift-testbed>
+		<ift-testbed font-name="Amarna" axis-wght="400" axis-ital="0">Carboniferous</ift-testbed>
+		<ift-testbed font-name="Amarna" axis-wght="500" axis-ital="0">Microarchaeological</ift-testbed>
+		<ift-testbed font-name="Amarna" axis-wght="600" axis-ital="0">Brachiopodes</ift-testbed>
+		<ift-testbed font-name="Amarna" axis-wght="700" axis-ital="0">Carbonize</ift-testbed>
+
+		<ift-testbed font-name="Amarna" font-size="16" axis-wght="300" axis-ital="0" text-columns="3" multiline>
 			I still remember the day when the Iraq Museum consisted of one shelf, half full of antiquities. Thereafter
 			Gertrude Bell acquired a brick building near the Tigris which was to serve for some twenty years as Iraq’s
 			first Museum of Antiquities. This has now been succeeded by a great building equipped in the most modern
@@ -128,10 +122,9 @@
 			pointed the finger of condemnation rather than witness the awful act of perjury which was about to be
 			perpetrated: the guilty one was Honest John Thomas, who, like Iago, had over the years deliberately built up
 			a reputation for honesty. Had we been wiser we would have remembered our Shakespeare.
-		</font-testbed>
+		</ift-testbed>
 
-		<font-testbed family="Amarna" size="16pt" axes="wght ital" minimums="100 0" maximums="700 1" defaults="400 0"
-			features="ss01 ss02" featureNames="Uncial e,Tailed U" columns="2">
+		<ift-testbed font-name="Amarna" font-size="24" axis-wght="400" axis-ital="0" text-columns="2" multiline>
 			The earliest remains of human habitation which Woolley revealed at Ur were found at the bottom of a great
 			excavated shaft, 50 feet below the surface. Deep down in the bowels of the earth he passed through many
 			levels of stratified occupation which ran from the end of the Early Dynastic period about 2500 BC, through a
@@ -150,10 +143,9 @@
 			survived, doubtless through Canaanite records, into the Hebrew scriptures of the Old Testament. Here was a
 			discovery after Woolley’s heart; a plausible authentification of the Old Testament record, for the
 			excitement of the Bible-reading public, and Woolley, a brilliant journalist, made the best of it.
-		</font-testbed>
+		</ift-testbed>
 
-		<font-testbed family="Amarna" size="14pt" axes="wght ital" minimums="100 0" maximums="700 1" defaults="500 0"
-			features="ss01 ss02" featureNames="Uncial e,Tailed U" columns="3">
+		<ift-testbed font-name="Amarna" font-size="20" axis-wght="500" axis-ital="0" text-columns="3" multiline>
 			Woolley’s most important discovery at Ur — and the second in antiquity — was the Royal Cemetery which
 			brought forth a wealth of Sumerian treasure, the like of which had never been seen before and is never
 			likely to be seen again. Woolley excavated and recorded more than two thousand graves, for the most part of
@@ -175,10 +167,9 @@
 			end. In other words, that everything underlying that stratum could not be later than the latest objects
 			contained within it, and these consisted of seal impressions in a style familiar to Mesopotamian
 			archaeologists.
-		</font-testbed>
+		</ift-testbed>
 
-		<font-testbed family="Amarna" size="16pt" axes="wght ital" minimums="100 0" maximums="700 1" defaults="600 0"
-			features="ss01 ss02" featureNames="Uncial e,Tailed U" columns="2">
+		<ift-testbed font-name="Amarna" font-size="24" axis-wght="600" axis-ital="0" text-columns="2" multiline>
 			Unfortunately, Woolley tended to have preconceived ideas and was determined to prove that his finds were
 			older than anything of the kind hitherto discovered. In particular, he was bent on proving that the
 			beginnings of civilization in Mesopotamia were older than the beginnings in Egypt, a misconception which led
@@ -202,10 +193,9 @@
 			record which has put Babylonian chronology of the third millennium BC on soundly based lines. The fact is
 			that both civilizations, Egyptian and Sumerian, developed more or less in step, and that is what Woolley’s
 			own excavations have demonstrated.
-		</font-testbed>
+		</ift-testbed>
 
-		<font-testbed family="Amarna" size="14pt" axes="wght ital" minimums="100 0" maximums="700 1" defaults="700 0"
-			features="ss01 ss02" featureNames="Uncial e,Tailed U" columns="3">
+		<ift-testbed font-name="Amarna" font-size="18" axis-wght="700" axis-ital="0" text-columns="3" multiline>
 			The sight of the Royal Cemetery when we were in full cry was amazing — and I recall that one of the royal
 			tombs, which contained no less than 74 bodies buried alive at the bottom of the deep royal shaft, appeared,
 			when exposed, to be a golden carpet ornamented with the beech leaf head-dresses of the ladies of the court,
@@ -232,7 +222,7 @@
 			Elam. Recently it has become apparent that some of the stone vessels were probably imported from as far
 			afield as the Kerman district of south central Iran. The freedom of movement and widespread ramifications of
 			trade in this period, Early Dynastic III, were remarkable and gradually developed over the centuries.
-		</font-testbed>
+		</ift-testbed>
 	</div>
 
 	<div class="box" style="background-color: #eee;">
