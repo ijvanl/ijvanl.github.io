@@ -189,36 +189,41 @@ class FontTestbed extends HTMLElement {
 		let previousFontSize = this.fontSize;
 		let maxFontSize = parseInt(clamp((availableWidth / currentWidth) * previousFontSize, minTextSize, maxTextSize));
 
-		this.fontSize = Math.min(parseInt(value), maxFontSize);
-
-		if (value >= maxFontSize) {
-			this.isAutoFitting = true;
-			this.sizeSetter(this.fontSize);
-		} else this.isAutoFitting = false;
+		if (!this.multiline) {
+			this.fontSize = Math.min(parseInt(value), maxFontSize);
+			if (value >= maxFontSize) {
+				this.isAutoFitting = true;
+				this.sizeSetter(this.fontSize);
+			} else this.isAutoFitting = false;
+		} else {
+			this.fontSize = parseInt(value);
+		}
 
 		this.textBox.style.fontSize = this.fontSize + "px";
 	}
 
 	autoResize() {
-		let minTextSize = 8;
-		let maxTextSize = 1000;
+		if (!this.multiline) {
+			let minTextSize = 8;
+			let maxTextSize = 1000;
 
-		let availableWidth = this.textBox.parentNode.clientWidth;
-		//console.log("availableWidth", availableWidth);
-		let currentWidth = this.textBox.scrollWidth;
-		//console.log("currentWidth", currentWidth);
-		let previousFontSize = this.fontSize;
+			let availableWidth = this.textBox.parentNode.clientWidth;
+			//console.log("availableWidth", availableWidth);
+			let currentWidth = this.textBox.scrollWidth;
+			//console.log("currentWidth", currentWidth);
+			let previousFontSize = this.fontSize;
 
-		let targetFontSize = parseInt(clamp((availableWidth / currentWidth) * previousFontSize, minTextSize, maxTextSize));
+			let targetFontSize = parseInt(clamp((availableWidth / currentWidth) * previousFontSize, minTextSize, maxTextSize));
 
-		if (this.isAutoFitting) {
-			this.fontSize = targetFontSize;
-		} else {
-			if (this.fontSize >= targetFontSize) this.isAutoFitting = true;
-			this.fontSize = Math.min(this.fontSize, targetFontSize);
+			if (this.isAutoFitting) {
+				this.fontSize = targetFontSize;
+			} else {
+				if (this.fontSize >= targetFontSize) this.isAutoFitting = true;
+				this.fontSize = Math.min(this.fontSize, targetFontSize);
+			}
+			this.sizeSetter(this.fontSize);
+			this.textBox.style.fontSize = this.fontSize + "px";
 		}
-		this.sizeSetter(this.fontSize);
-		this.textBox.style.fontSize = this.fontSize + "px";
 	}
 
 	updateAxisValues() {
