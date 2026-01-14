@@ -1,6 +1,6 @@
 "use strict";
 
-const TOOLS_CSS_ADDR = "tools.css";
+const TOOLS_CSS_ADDR = "/fonts/tools/tools.css";
 
 function clamp(number, min, max) {
 	return Math.min(Math.max(number, min), max);
@@ -18,9 +18,38 @@ class FontTestbed extends HTMLElement {
 		return axesTitle;
 	}
 
+	createSelector(name, choices, defaultValue, onUpdateCallback) {
+		let container = document.createElement("span");
+		container.setAttribute("class", "selectorContainer");
+
+		if (name != null) {
+			let label = document.createElement("span");
+			label.textContent = name;
+			container.appendChild(label);
+		}
+
+		let selector = document.createElement("select");
+
+		for (let choice of choices) {
+			let choiceOption = document.createElement("option");
+			choiceOption.value = choice.value;
+			choiceOption.innerHTML = choice.text;
+			selector.appendChild(choiceOption);
+			if (choice.isDefault) selector.value = choice.value; // default fallback
+		}
+		if (defaultValue) selector.value = defaultValue;
+		
+		selector.addEventListener("input", () => {
+			onUpdateCallback(selector.value);
+		});
+
+		container.appendChild(selector);
+		return container;
+	}
+
 	createSlider(name, min, max, value, onUpdateCallback) {
 		let container = document.createElement("span");
-		container.setAttribute("class", "axisContainer");
+		container.setAttribute("class", "sliderContainer");
 
 		let label = document.createElement("span");
 		label.textContent = name;
@@ -60,7 +89,7 @@ class FontTestbed extends HTMLElement {
 
 	createToggle(name, value, onUpdateCallback) {
 		let container = document.createElement("span");
-		container.setAttribute("class", "featureContainer");
+		container.setAttribute("class", "toggleContainer");
 
 		let label = document.createElement("span");
 		label.textContent = name;
@@ -75,8 +104,12 @@ class FontTestbed extends HTMLElement {
 			onUpdateCallback(checkbox.checked);
 		});
 
+		let setter = (value) => {
+			checkbox.checked = value;
+		}
+
 		container.appendChild(label);
-		return container;
+		return [container, setter];
 	}
 
 	// Element functionality written in here
@@ -89,6 +122,7 @@ class FontTestbed extends HTMLElement {
 		this.textColumns = parseInt(this.hasAttribute("text-columns") ? this.getAttribute("text-columns") : 1);
 		this.autofit = this.hasAttribute("autofit");
 		this.isAutoFitting = this.autofit;
+		//this.autofitSetter(this.isAutoFitting);
 
 		this.axisValues = {};
 		for (let axis of this.font.axes) {
@@ -98,6 +132,11 @@ class FontTestbed extends HTMLElement {
 		this.featureValues = {};
 		for (let feature of this.font.features) {
 			this.featureValues[feature.tag] = this.hasAttribute(`feat-${feature.tag}`);
+		}
+
+		this.variantValues = {};
+		for (let [variant, entries] of Object.entries(this.font.variants)) {
+			this.variantValues[variant] = this.hasAttribute(`variant-${variant}`) ? this.getAttribute(`variant-${variant}`) : entries[0].value;
 		}
 
 		this.shadow = this.attachShadow({ mode: "open" });
@@ -111,25 +150,40 @@ class FontTestbed extends HTMLElement {
 		this.infoBox = document.createElement("span");
 		this.infoBox.setAttribute("class", "infoBox");
 
+		// Size slider
 		{
 			let $this = this;
-			let sizeSlider = this.createSlider("Size", 6, 1000, this.fontSize, function(value) {
-				$this.manualResize(value);
-			});
-
+			let sizeSlider = this.createSlider("Size", 6, 1000, this.fontSize, (value) => $this.manualResize(value));
 			this.infoBox.appendChild(sizeSlider[0]);
 			this.sizeSetter = sizeSlider[1];
+		}
 
-			let italicToggle = this.createToggle("Italic", false, function(value) {
-				$this.textBox.style.fontStyle = value ? "italic" : "normal";
+		// Autofit toggle
+		if (this.autofit) {
+			let $this = this;
+			let autofitToggle = this.createToggle(" \u276E \u276F ", this.isAutoFitting, function(value) {
+				$this.isAutoFitting = value;
+				this.autofitSetter(this.isAutoFitting);
+			});
+			
+			this.infoBox.appendChild(autofitToggle[0]);
+			this.autofitSetter = autofitToggle[1];
+		}
+
+		this.infoBox.appendChild(this.createTitle("Instances"));
+
+		for (const [variant, entries] of Object.entries(this.font.variants)) {
+			let $this = this;
+			let variantSelector = this.createSelector(null, entries, this.variantValues[variant], function(value) {
+				$this.changeVariantValue(variant, value);
 				$this.autoResize();
 			});
-			this.infoBox.appendChild(italicToggle);
+			this.infoBox.appendChild(variantSelector);
 		}
 
 		this.infoBox.appendChild(this.createTitle("Axes"));
 
-		for (let axis of this.font.axes) {
+		for (const axis of this.font.axes) {
 			let $this = this;
 			let axisSlider = this.createSlider(axis.text, axis.min, axis.max, this.axisValues[axis.tag], function(value) {
 				$this.changeAxisValue(axis.tag, value);
@@ -140,12 +194,12 @@ class FontTestbed extends HTMLElement {
 
 		this.infoBox.appendChild(this.createTitle("Features"));
 
-		for (let feature of this.font.features) {
+		for (const feature of this.font.features) {
 			let $this = this;
 			let featureSelector = this.createToggle(feature.text, this.featureValues[feature.tag], function(value) {
 				$this.changeFeatureValue(feature.tag, value);
 				$this.autoResize();
-			});
+			})[0];
 			this.infoBox.appendChild(featureSelector);
 		}
 
@@ -160,6 +214,11 @@ class FontTestbed extends HTMLElement {
 		if (this.autofit) this.textBox.style.whiteSpace = "nowrap";
 		else this.textBox.style.columnCount = this.textColumns;
 		this.textBox.setAttribute("contenteditable", "plaintext-only");
+
+		this.textBox.addEventListener("input", () => {
+			this.isAutoFitting = false;
+			this.autofitSetter(this.isAutoFitting);
+		});
 
 		this.testbedContainer.appendChild(this.infoBox);
 		this.testbedContainer.appendChild(this.textBox);
@@ -195,6 +254,7 @@ class FontTestbed extends HTMLElement {
 				this.isAutoFitting = true;
 				this.sizeSetter(this.fontSize);
 			} else this.isAutoFitting = false;
+			this.autofitSetter(this.isAutoFitting);
 		} else {
 			this.fontSize = parseInt(value);
 		}
@@ -219,6 +279,7 @@ class FontTestbed extends HTMLElement {
 				this.fontSize = targetFontSize;
 			} else {
 				if (this.fontSize >= targetFontSize) this.isAutoFitting = true;
+				this.autofitSetter(this.isAutoFitting);
 				this.fontSize = Math.min(this.fontSize, targetFontSize);
 			}
 			this.sizeSetter(this.fontSize);
@@ -242,6 +303,12 @@ class FontTestbed extends HTMLElement {
 		this.textBox.style.fontFeatureSettings = fontFeatureSettings.replace(/,+$/g, '');
 	}
 
+	updateVariantValues() {
+		for (const [key, value] of Object.entries(this.variantValues)) {
+			if (value) this.textBox.style.setProperty(key, value);
+		}
+	}
+
 	changeAxisValue(axis, value) {
 		this.axisValues[axis] = value;
 		this.updateAxisValues();
@@ -251,6 +318,11 @@ class FontTestbed extends HTMLElement {
 	changeFeatureValue(feature, value) {
 		this.featureValues[feature] = value;
 		this.updateFeatureValues();
+	}
+
+	changeVariantValue(variant, value) {
+		this.variantValues[variant] = value;
+		this.updateVariantValues();
 	}
 
 	disconnectedCallback() {

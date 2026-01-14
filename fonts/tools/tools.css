@@ -1,10 +1,14 @@
+* {
+	box-sizing: border-box;
+}
+
 .testbedContainer {
 	border-bottom: 1px solid currentColor;
 	margin-bottom: 20px;
 }
 
 .testbedContainer .infoBox {
-	font-family: "Zero Sans", 'Helvetica Neue', 'Helvetica', sans-serif;
+	font-family: 'Zero Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
 	font-size: 11pt;
 }
 
@@ -17,19 +21,20 @@
 	padding-left: 10px;
 }
 
-.testbedContainer .axisContainer {
+.testbedContainer .sliderContainer {
 	display: inline-block;
 	width: fit-content;
 	height: fit-content;
 }
 
-.testbedContainer .axisContainer>*,
+.testbedContainer .sliderContainer>*,
+.testbedContainer .selectorContainer,
 .infoTitle {
 	vertical-align: middle;
 	margin-right: 10px;
 }
 
-.testbedContainer .axisContainer>input[type="number"] {
+.testbedContainer .sliderContainer>input[type="number"] {
 	width: 50px;
 	appearance: none;
 	background-color: inherit;
@@ -38,6 +43,7 @@
 	border-bottom: 1px solid currentColor;
 	font-family: inherit;
 	font-size: 11pt;
+	height: 25px;
 }
 
 .testbedContainer input::-webkit-inner-spin-button,
@@ -102,32 +108,56 @@
 	display: none;
 }
 
-.testbedContainer .featureContainer span:has(input[type="checkbox"]) {
+.testbedContainer .toggleContainer span:has(input[type="checkbox"]) {
 	display: inline-block;
 	border-radius: 3px;
 	padding: 0px 5px;
-	margin-right: 3px;
+	margin-left: -5px;
+	margin-right: 8px;
 	vertical-align: middle;
 	height: 25px;
 	line-height: 25px;
 }
 
-.testbedContainer .featureContainer span:has(input[type="checkbox"]):hover {
+.testbedContainer .toggleContainer span:has(input[type="checkbox"]):hover {
 	background-color: rgb(from currentColor r g b / 0.2);
 }
 
-.testbedContainer .featureContainer span:has(input[type="checkbox"]:checked) {
-	background-color: rgb(from currentColor r g b / 0.4);
+.testbedContainer .toggleContainer span:has(input[type="checkbox"]:checked) {
+	background-color: rgb(from currentColor r g b / 0.3);
 }
+
+
+.testbedContainer .selectorContainer select {
+	display: inline-block;
+	appearance: none;
+	background-color: inherit;
+	color: currentColor;
+	border-radius: 0px;
+	border: none;
+	padding-right: 15px;
+	font-family: inherit;
+	font-size: inherit;
+	height: 25px;
+}
+
+.testbedContainer .selectorContainer {
+	display: inline-block;
+	border: none;
+	border-bottom: 1px solid currentColor;
+	padding: 0px 5px;
+	height: 25px;
+}
+
+.testbedContainer .selectorContainer::after {
+	content: "\2B19";
+	margin-left: -10px;
+	pointer-events: none;
+}
+
 
 .testbedContainer .textBox {
 	column-gap: 15px;
 	text-align: justify;
 	margin: 15px 0px;
-}
-
-@media (width <= 1000px) {
-	.testbedContainer .textBox {
-		column-count: 1 !important;
-	}
 }
