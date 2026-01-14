@@ -11,6 +11,7 @@ function getMetadata() {
 		let fontFamily = element.hasAttribute("family-name") ? element.getAttribute("family-name") : fontName;
 		let axes = [];
 		let features = [];
+		let variants = {};
 
 		let axisElements = element.querySelectorAll("axis");
 		for (let axisElement of axisElements) {
@@ -30,11 +31,23 @@ function getMetadata() {
 				text: featureElement.innerHTML
 			});
 		}
+
+		let variantElements = element.querySelectorAll("variant");
+		for (let variantElement of variantElements) {
+			let variantOf = variantElement.getAttribute("of");
+			if (!variants.hasOwnProperty(variantOf)) variants[variantOf] = [];
+			variants[variantOf].push({
+				value: variantElement.hasAttribute("value") ? variantElement.getAttribute("value") : variantElement.innerText,
+				text: variantElement.innerHTML,
+				isDefault: variantElement.hasAttribute("default")
+			});
+		}
 		
 		metadata[fontName] = {
 			family: fontFamily,
 			axes: axes,
-			features: features
+			features: features,
+			variants: variants
 		};
 	}
 
