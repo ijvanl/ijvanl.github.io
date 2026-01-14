@@ -1,6 +1,6 @@
 "use strict";
 
-const TOOLS_CSS_ADDR = "/fonts/tools/tools.css";
+const TOOLS_CSS_ADDR = "tools.css";
 
 function clamp(number, min, max) {
 	return Math.min(Math.max(number, min), max);
@@ -87,8 +87,8 @@ class FontTestbed extends HTMLElement {
 		this.font = document.iftMeta[this.fontName];
 		this.fontSize = parseInt(this.hasAttribute("font-size") ? this.getAttribute("font-size") : 72);
 		this.textColumns = parseInt(this.hasAttribute("text-columns") ? this.getAttribute("text-columns") : 1);
-		this.multiline = this.hasAttribute("multiline");
-		this.isAutoFitting = !this.multiline;
+		this.autofit = this.hasAttribute("autofit");
+		this.isAutoFitting = this.autofit;
 
 		this.axisValues = {};
 		for (let axis of this.font.axes) {
@@ -157,7 +157,7 @@ class FontTestbed extends HTMLElement {
 		this.textBox.style.fontFamily = this.font.family;
 		this.textBox.style.fontSize = this.fontSize + "px";
 		this.textBox.style.width = "fit-content";
-		if (!this.multiline) this.textBox.style.whiteSpace = "nowrap";
+		if (this.autofit) this.textBox.style.whiteSpace = "nowrap";
 		else this.textBox.style.columnCount = this.textColumns;
 		this.textBox.setAttribute("contenteditable", "plaintext-only");
 
@@ -166,7 +166,7 @@ class FontTestbed extends HTMLElement {
 
 		setTimeout(() => this.textBox.append(this.textContent.trim().replace(/\s+/g, " ")), 50);
 
-		if (!this.multiline) {
+		if (this.autofit) {
 			setTimeout(() => this.autoResize(), 100);
 			addEventListener("resize", () => this.autoResize());
 		}
@@ -189,7 +189,7 @@ class FontTestbed extends HTMLElement {
 		let previousFontSize = this.fontSize;
 		let maxFontSize = parseInt(clamp((availableWidth / currentWidth) * previousFontSize, minTextSize, maxTextSize));
 
-		if (!this.multiline) {
+		if (this.autofit) {
 			this.fontSize = Math.min(parseInt(value), maxFontSize);
 			if (value >= maxFontSize) {
 				this.isAutoFitting = true;
@@ -203,7 +203,7 @@ class FontTestbed extends HTMLElement {
 	}
 
 	autoResize() {
-		if (!this.multiline) {
+		if (this.autofit) {
 			let minTextSize = 8;
 			let maxTextSize = 1000;
 
