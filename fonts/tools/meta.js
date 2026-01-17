@@ -12,6 +12,8 @@ function getMetadata() {
 		let axes = [];
 		let features = [];
 		let variants = {};
+		let metrics = {};
+		let charset = {};
 
 		let axisElements = element.querySelectorAll("axis");
 		for (let axisElement of axisElements) {
@@ -42,12 +44,28 @@ function getMetadata() {
 				isDefault: variantElement.hasAttribute("default")
 			});
 		}
+
+
+		let metricElements = element.querySelectorAll("metric");
+		for (let metricElement of metricElements) {
+			metrics[metricElement.innerText] = parseInt(metricElement.getAttribute("value"));
+		}
+
+		let charsetElements = element.querySelectorAll("charset");
+		for (let charsetElement of charsetElements) {
+			let name = charsetElement.hasAttribute("name") ? charsetElement.getAttribute("name") : "Characters";
+			let chars = charsetElement.innerText.replace(/[\s\n]/g, '').split("");
+			charset[name] = chars;
+		}
+		if (charset.size == 0) charset = new Set("DEFAULTdefault1234567890!@#$%^&*()".split(""));
 		
 		metadata[fontName] = {
 			family: fontFamily,
 			axes: axes,
 			features: features,
-			variants: variants
+			variants: variants,
+			metrics: metrics,
+			charset: charset,
 		};
 	}
 

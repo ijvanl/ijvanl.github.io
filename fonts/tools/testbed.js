@@ -1,7 +1,5 @@
 "use strict";
 
-const TOOLS_CSS_ADDR = "/fonts/tools/tools.css";
-
 function clamp(number, min, max) {
 	return Math.min(Math.max(number, min), max);
 }
@@ -11,111 +9,8 @@ class FontTestbed extends HTMLElement {
 		super();
 	}
 
-	createTitle(text) {
-		let axesTitle = document.createElement("span");
-		axesTitle.setAttribute("class", "infoTitle");
-		axesTitle.innerText = text;
-		return axesTitle;
-	}
-
-	createSelector(name, choices, defaultValue, onUpdateCallback) {
-		let container = document.createElement("span");
-		container.setAttribute("class", "selectorContainer");
-
-		if (name != null) {
-			let label = document.createElement("span");
-			label.textContent = name;
-			container.appendChild(label);
-		}
-
-		let selector = document.createElement("select");
-
-		for (let choice of choices) {
-			let choiceOption = document.createElement("option");
-			choiceOption.value = choice.value;
-			choiceOption.innerHTML = choice.text;
-			selector.appendChild(choiceOption);
-			if (choice.isDefault) selector.value = choice.value; // default fallback
-		}
-		if (defaultValue) selector.value = defaultValue;
-		
-		selector.addEventListener("input", () => {
-			onUpdateCallback(selector.value);
-		});
-
-		container.appendChild(selector);
-		return container;
-	}
-
-	createSlider(name, min, max, value, onUpdateCallback) {
-		let container = document.createElement("span");
-		container.setAttribute("class", "sliderContainer");
-
-		let label = document.createElement("span");
-		label.textContent = name;
-
-		let slider = document.createElement("input");
-		slider.setAttribute("type", "range");
-		slider.setAttribute("min", min);
-		slider.setAttribute("max", max);
-		slider.value = value;
-
-		let textInput = document.createElement("input");
-		textInput.setAttribute("type", "number");
-		textInput.value = value;
-
-		slider.addEventListener("input", () => {
-			textInput.value = slider.valueAsNumber;
-			onUpdateCallback(slider.valueAsNumber);
-		});
-
-		textInput.addEventListener("change", () => {
-			textInput.value = clamp(textInput.valueAsNumber, slider.min, slider.max);
-			slider.value = textInput.valueAsNumber;
-			onUpdateCallback(slider.valueAsNumber);
-		});
-
-		let setter = (value) => {
-			textInput.value = clamp(value, slider.min, slider.max);
-			slider.value = value;
-		}
-
-		container.appendChild(label);
-		container.appendChild(slider);
-		container.appendChild(textInput);
-
-		return [container, setter];
-	}
-
-	createToggle(name, value, onUpdateCallback) {
-		let container = document.createElement("span");
-		container.setAttribute("class", "toggleContainer");
-
-		let label = document.createElement("span");
-		label.textContent = name;
-
-		let checkbox = document.createElement("input");
-		checkbox.setAttribute("type", "checkbox");
-		checkbox.checked = value;
-		label.appendChild(checkbox);
-
-		label.addEventListener("click", () => {
-			checkbox.checked = !checkbox.checked;
-			onUpdateCallback(checkbox.checked);
-		});
-
-		let setter = (value) => {
-			checkbox.checked = value;
-		}
-
-		container.appendChild(label);
-		return [container, setter];
-	}
-
 	// Element functionality written in here
 	connectedCallback() {
-		//this.displayText = this.childNodes[0].textContent.trim();
-
 		this.fontName = this.getAttribute("font-name");
 		this.font = document.iftMeta[this.fontName];
 		this.fontSize = parseInt(this.hasAttribute("font-size") ? this.getAttribute("font-size") : 72);
@@ -153,7 +48,7 @@ class FontTestbed extends HTMLElement {
 		// Size slider
 		{
 			let $this = this;
-			let sizeSlider = this.createSlider("Size", 6, 1000, this.fontSize, (value) => $this.manualResize(value));
+			let sizeSlider = createSlider("Size", 6, 1000, this.fontSize, (value) => $this.manualResize(value));
 			this.infoBox.appendChild(sizeSlider[0]);
 			this.sizeSetter = sizeSlider[1];
 		}
@@ -161,7 +56,7 @@ class FontTestbed extends HTMLElement {
 		// Autofit toggle
 		if (this.autofit) {
 			let $this = this;
-			let autofitToggle = this.createToggle(" \u276E \u276F ", this.isAutoFitting, function(value) {
+			let autofitToggle = createToggle(" \u276E \u276F ", this.isAutoFitting, function(value) {
 				$this.isAutoFitting = value;
 				this.autofitSetter(this.isAutoFitting);
 			});
@@ -170,33 +65,33 @@ class FontTestbed extends HTMLElement {
 			this.autofitSetter = autofitToggle[1];
 		}
 
-		this.infoBox.appendChild(this.createTitle("Instances"));
+		this.infoBox.appendChild(createTitle("Instances"));
 
 		for (const [variant, entries] of Object.entries(this.font.variants)) {
 			let $this = this;
-			let variantSelector = this.createSelector(null, entries, this.variantValues[variant], function(value) {
+			let variantSelector = createSelector(null, entries, this.variantValues[variant], function(value) {
 				$this.changeVariantValue(variant, value);
 				$this.autoResize();
 			});
 			this.infoBox.appendChild(variantSelector);
 		}
 
-		this.infoBox.appendChild(this.createTitle("Axes"));
+		this.infoBox.appendChild(createTitle("Axes"));
 
 		for (const axis of this.font.axes) {
 			let $this = this;
-			let axisSlider = this.createSlider(axis.text, axis.min, axis.max, this.axisValues[axis.tag], function(value) {
+			let axisSlider = createSlider(axis.text, axis.min, axis.max, this.axisValues[axis.tag], function(value) {
 				$this.changeAxisValue(axis.tag, value);
 				$this.autoResize();
 			});
 			this.infoBox.appendChild(axisSlider[0]);
 		}
 
-		this.infoBox.appendChild(this.createTitle("Features"));
+		this.infoBox.appendChild(createTitle("Features"));
 
 		for (const feature of this.font.features) {
 			let $this = this;
-			let featureSelector = this.createToggle(feature.text, this.featureValues[feature.tag], function(value) {
+			let featureSelector = createToggle(feature.text, this.featureValues[feature.tag], function(value) {
 				$this.changeFeatureValue(feature.tag, value);
 				$this.autoResize();
 			})[0];
@@ -326,19 +221,19 @@ class FontTestbed extends HTMLElement {
 	}
 
 	disconnectedCallback() {
-		console.log("Custom element removed from page.");
+		//console.log("Custom element removed from page.");
 	}
 
 	connectedMoveCallback() {
-		console.log("Custom element moved with moveBefore()");
+		//console.log("Custom element moved with moveBefore()");
 	}
 
 	adoptedCallback() {
-		console.log("Custom element moved to new page.");
+		//console.log("Custom element moved to new page.");
 	}
 
 	attributeChangedCallback(name, oldValue, newValue) {
-		console.log(`Attribute ${name} has changed.`);
+		//console.log(`Attribute ${name} has changed.`);
 	}
 }
 

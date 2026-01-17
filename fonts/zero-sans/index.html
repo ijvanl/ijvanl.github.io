@@ -31,10 +31,39 @@
 		<feature tag="ss01">Simplified G</feature>
 		<feature tag="ss02">Straightened curves</feature>
 		<feature tag="ss03">Single-storey a</feature>
+		<metric value="-200">Descender</metric>
+		<metric value="0">Baseline</metric>
+		<metric value="500">X-height</metric>
+		<metric value="700">Cap height</metric>
+		<charset name="Uppercase">ABCDEFGHIJKLMNOPQRSTUVWXYZ</charset>
+		<charset name="Lowercase">abcdefghijklmnopqrstuvwxyz</charset>
+		<charset name="Numerals">0123456789</charset>
+		<charset name="Punctuation">
+			.,:;&hellip;!&iexcl;?&iquest;&centerdot;&bullet;*#&sol;&bsol;-&ndash;&mdash;_(){}[]
+			&lsquo;&rsquo;&ldquo;&rdquo;&laquo;&raquo;&lsaquo;&rsaquo;"'&ordf;&ordm;
+		</charset>
+		<charset name="Symbols, Currency & Math">
+			&dollar;&cent;&euro;&pound;&yen;&#x20B9;
+			&plus;&minus;&times;&divide;&gt;&lt;&equals;~^%
+			&#xF8FF;@&amp;&para;&sect;&copy;&reg;&trade;&deg;|&#x25CC;
+		</charset>
+
+		<charset name="Uppercase &mdash; Accents">
+			&#65;&#193;&#258;&#7854;&#7862;&#7856;&#7858;&#7860;&#461;&#194;&#7844;&#7852;&#7846;&#7848;&#7850;&#196;&#7840;&#192;&#7842;&#11373;&#256;&#260;&#197;&#195;&#198;&#66;&#67;&#262;&#268;&#199;&#264;&#266;&#68;&#270;&#272;&#208;&#69;&#201;&#282;&#202;&#7870;&#7878;&#7872;&#7874;&#7876;&#203;&#278;&#7864;&#200;&#7866;&#274;&#280;&#7868;&#399;&#70;&#71;&#286;&#284;&#290;&#288;&#7712;&#72;&#294;&#292;&#73;&#306;&#205;&#206;&#207;&#304;&#7882;&#204;&#7880;&#298;&#302;&#296;&#74;&#308;&#75;&#310;&#76;&#313;&#317;&#315;&#321;&#77;&#78;&#323;&#327;&#325;&#209;&#79;&#211;&#212;&#7888;&#7896;&#7890;&#7892;&#7894;&#214;&#7884;&#210;&#7886;&#416;&#7898;&#7906;&#7900;&#7902;&#7904;&#336;&#332;&#216;&#213;&#338;&#80;&#222;&#81;&#82;&#340;&#344;&#342;&#83;&#346;&#352;&#350;&#348;&#536;&#7838;&#84;&#356;&#354;&#538;&#85;&#218;&#364;&#219;&#220;&#7908;&#217;&#7910;&#431;&#7912;&#7920;&#7914;&#7916;&#7918;&#368;&#362;&#370;&#366;&#360;&#86;&#87;&#7810;&#372;&#7812;&#7808;&#88;&#89;&#221;&#374;&#376;&#7924;&#7922;&#7926;&#7928;&#90;&#377;&#381;&#379;&#42891;
+		</charset>
+
+		<charset name="Lowercase &mdash; Accents">
+			&#97;&#225;&#259;&#7855;&#7863;&#7857;&#7859;&#7861;&#462;&#226;&#7845;&#7853;&#7847;&#7849;&#7851;&#228;&#7841;&#224;&#7843;&#593;&#257;&#261;&#229;&#227;&#230;&#98;&#99;&#263;&#269;&#231;&#265;&#267;&#100;&#271;&#273;&#240;&#101;&#233;&#283;&#234;&#7871;&#7879;&#7873;&#7875;&#7877;&#235;&#279;&#7865;&#232;&#7867;&#275;&#281;&#7869;&#601;&#102;&#103;&#287;&#285;&#291;&#289;&#7713;&#104;&#295;&#293;&#105;&#305;&#237;&#238;&#239;&#7883;&#236;&#7881;&#299;&#303;&#297;&#307;&#106;&#567;&#309;&#107;&#311;&#108;&#314;&#318;&#316;&#322;&#109;&#110;&#324;&#328;&#326;&#241;&#111;&#243;&#244;&#7889;&#7897;&#7891;&#7893;&#7895;&#246;&#7885;&#242;&#7887;&#417;&#7899;&#7907;&#7901;&#7903;&#7905;&#337;&#333;&#248;&#245;&#339;&#112;&#254;&#113;&#114;&#341;&#345;&#343;&#115;&#347;&#353;&#351;&#349;&#537;&#223;&#116;&#357;&#355;&#539;&#117;&#250;&#365;&#251;&#252;&#7909;&#249;&#7911;&#432;&#7913;&#7921;&#7915;&#7917;&#7919;&#369;&#363;&#371;&#367;&#361;&#118;&#119;&#7811;&#373;&#7813;&#7809;&#120;&#121;&#253;&#375;&#255;&#7925;&#7923;&#7927;&#7929;&#122;&#378;&#382;&#380;&#42892;
+		</charset>
+
+		<charset name="Marks">&#776;&#775;&#768;&#769;&#779;&#770;&#780;&#774;&#778;&#771;&#772;&#777;&#786;&#795;&#803;&#806;&#807;&#808;&#821;&#822;&#823;&#824;</charset>
+		<!--<charset name="Marks">&#168;&#729;&#96;&#180;&#733;&#710;&#711;&#728;&#730;&#732;&#175;&#184;&#731;&#700;&#699;</charset>-->
 	</ift-font-meta>
 
 	<link rel="stylesheet" href="/fonts/tools/tools.js">
 	<script src="/fonts/tools/meta.js"></script>
+	<script src="/fonts/tools/interface.js"></script>
+	<script src="/fonts/tools/repertoire.js"></script>
 	<script src="/fonts/tools/testbed.js"></script>
 
 	<style>
@@ -52,7 +81,11 @@
 	<div class="layoutImage accent"><img src="/fonts/zero-sans/assets/instances.svg"></div>
 	<div class="layoutImage"><img src="/fonts/zero-sans/assets/opsz-variations.svg"></div>
 	<div class="layoutImage accent"><img src="/fonts/zero-sans/assets/opsz.svg"></div>
-	<div class="layoutImage"><img src="/fonts/zero-sans/assets/glyphset.svg"></div>
+	<!-- <div class="layoutImage"><img src="/fonts/zero-sans/assets/glyphset.svg"></div> -->
+
+	<div class="box accent glyphsetBox">
+		<ift-repertoire font-name="Zero Sans" font-size="48" axis-wght="400"></ift-repertoire>
+	</div>
 
 	<div class="box accent testbedBox">
 		<ift-testbed font-name="Zero Sans" autofit axis-wght="100" axis-opsz="288" feat-ss01>Granular</ift-testbed>
