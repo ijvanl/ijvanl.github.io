@@ -56,7 +56,7 @@ class FontTestbed extends HTMLElement {
 		// Autofit toggle
 		if (this.autofit) {
 			let $this = this;
-			let autofitToggle = createToggle(" \u276E \u276F ", this.isAutoFitting, function(value) {
+			let autofitToggle = createToggle(" \u2194 ", this.isAutoFitting, function(value) {
 				$this.isAutoFitting = value;
 				this.autofitSetter(this.isAutoFitting);
 			});
