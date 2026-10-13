@@ -4,5 +4,16 @@ body {
 	background-position: 50% 100%;
 	background-size: cover;
 	min-height: 100vh;
-	font-family: "Optima", "Georgia", serif;
+
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: center;
+
+	font-family: "Optima";
+	font-weight: 400;
+}
+
+.main {
+	color: #fff;
 }
