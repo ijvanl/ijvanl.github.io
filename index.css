@@ -17,6 +17,11 @@ h1 {
 	font-weight: 400;
 }
 
+a {
+	color: #fff;
+}
+
 .main {
 	color: #fff;
+	text-align: center;
 }
