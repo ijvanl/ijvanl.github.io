@@ -1,6 +1,8 @@
 body {
 	background-color: #000;
-	background: image("banner.jpg");
-	background-position: 50% 50%;
+	background: url("banner.jpg");
+	background-position: 50% 100%;
 	background-size: cover;
-} 
+	min-height: 100vh;
+	font-family: "Optima", "Georgia", serif;
+}
