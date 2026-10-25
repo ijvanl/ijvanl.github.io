@@ -1,9 +1,13 @@
+* {
+	box-sizing: border-box;
+}
+
 body {
 	background-color: #000;
 	background: url("banner.jpg");
 	background-position: 50% 100%;
 	background-size: cover;
-	min-height: 95vh;
+	min-height: 100vh;
 
 	display: flex;
 	flex-flow: column nowrap;
