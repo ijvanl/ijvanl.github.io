@@ -261,16 +261,16 @@ function generateResults() {
 	let text;
 	if (game.finishCondition == "win") {
 		text = `${game.textResults}
-		I finished Wikipedle in ${game.fmtTimeSinceStart} and ${game.followedLinks} moves (${settings.maxSteps - game.followedLinks} moves left). Life is awesome right now.
-		I bet you can't do better: https://ishtar.page/wikipedle/`;
+I finished Wikipedle in ${game.fmtTimeSinceStart} and ${game.stepCount} moves (${settings.maxSteps - game.stepCount} moves left). Life is awesome right now.
+I bet you can't do better: https://ishtar.page/wikipedle/`;
 	} else if (game.finishCondition == "failUndo") {
 		text = `${game.textResults}
-		I ran out of undo moves on today's Wikipedle, which took me ${game.fmtTimeSinceStart}, because I'm indecisive.
-		I bet you can't do better, though: https://ishtar.page/wikipedle/`;
+I ran out of undo moves on today's Wikipedle, which took me ${game.fmtTimeSinceStart}, because I'm indecisive.
+I bet you can't do better, though: https://ishtar.page/wikipedle/`;
 	} else if (game.finishCondition == "failLinks") {
 		text = `${game.textResults}
-		I ran out of moves on Wikipedle, which took me ${game.fmtTimeSinceStart}. Oh well.
-		I bet you can't do better, though: https://ishtar.page/wikipedle/`;
+I ran out of moves on Wikipedle, which took me ${game.fmtTimeSinceStart}. Oh well.
+I bet you can't do better, though: https://ishtar.page/wikipedle/`;
 	}
 	console.log(text);
 	navigator.clipboard.writeText(text);
