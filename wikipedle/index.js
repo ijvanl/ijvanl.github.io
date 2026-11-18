@@ -260,16 +260,19 @@ function checkForFinish() {
 function generateResults() {
 	let text;
 	if (game.finishCondition == "win") {
-		text = `${game.textResults}
-🌐 I finished Wikipedle in ${game.fmtTimeSinceStart} and ${game.stepCount} moves (${settings.maxSteps - game.stepCount} moves left). Life is awesome right now.
+		text = `Wikipedle ${game.nthGame}
+${game.textResults}
+${game.stepCount}/${settings.maxSteps} (${game.fmtTimeSinceStart})
 https://ishtar.page/wikipedle/`;
 	} else if (game.finishCondition == "failUndo") {
-		text = `${game.textResults}
-🌐 I ran out of undo moves on today's Wikipedle, which took me ${game.fmtTimeSinceStart}, because I'm indecisive.
-https://ishtar.page/wikipedle/`;
+		text = `Wikipedle ${game.nthGame}
+${game.textResults}
+0 undos left (${game.stepCount}/${settings.maxSteps} ${game.fmtTimeSinceStart})
+https://ishtar.page/wikipedle/`
 	} else if (game.finishCondition == "failLinks") {
-		text = `${game.textResults}
-🌐 I ran out of moves on Wikipedle, which took me ${game.fmtTimeSinceStart}. Oh well.
+		text = `Wikipedle ${game.nthGame}
+${game.textResults}
+X/${settings.maxSteps} (${game.fmtTimeSinceStart})
 https://ishtar.page/wikipedle/`;
 	}
 	console.log(text);
