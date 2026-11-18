@@ -24,16 +24,7 @@
 				<p>
 					<b>7 steps allowed,</b> with <b>3 undo steps.</b>
 				</p>
-				<div class="greenbox floatleft">
-					<b>EASY MODE</b><br>
-					Includes info boxes, portals, images, "See Also".
-					<a class="button" onclick="onStartFired(true)" href="#">Play</a>
-				</div>
-				<div class="redbox floatright">
-					<b>HARD MODE</b><br>
-					Only the text and links from the body of the article.
-					<a class="button" onclick="onStartFired(true)" href="#">Play</a>
-				</div>
+				<a class="button" onclick="onStartFired(true)" href="#">Play</a>
 			</div>
 		</div>
 
@@ -83,7 +74,7 @@
 				You solved today's Wikipedle in <b><span class="linksFollowed">6</span> steps</b>,
 				with <span class="undoSteps">3</span> undo steps remaining. You clever bastard.
 			</p>
-			<a class="button" onclick="copyLink()" href="#">Share your results</a>
+			<a class="button" onclick="generateResults()" href="#">Share your results</a>
 		</div>
 
 		<div class="finish" id="finishBadUndo">
@@ -93,7 +84,7 @@
 				after only following <span class="linksFollowed">6</span> links.
 			</p>
 			<p>Indecisive! Oh well...</p>
-			<a class="button" onclick="copyLink()" href="#">Share your results anyway</a>
+			<a class="button" onclick="generateResults()" href="#">Share your results anyway</a>
 		</div>
 
 		<div class="finish" id="finishBadLinks">
@@ -103,7 +94,7 @@
 				with <span class="undoSteps">3</span> undo steps left.
 			</p>
 			<p><b>Headstrong!</b> Oh well...</p>
-			<a class="button" onclick="copyLink()" href="#">Share your results anyway</a>
+			<a class="button" onclick="generateResults()" href="#">Share your results anyway</a>
 		</div>
 	</div>
 </body>
