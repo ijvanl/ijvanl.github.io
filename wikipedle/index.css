@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&display=swap');
+
+/* fonts */
+
+h1, h2, h3	{ font-family: "Georgia", serif; font-weight: 400; }
+body		{ font-family: sans-serif; }
+
+a {
+	color: #36c;
+	text-decoration: none;
+}
+a:visited { color: #6a60b0; }
+
+/* layout */
+
+* { box-sizing: border-box; }
+
+html, body {
+	margin: 0px;
+	padding: 0px;
+	width: 100vw;
+}
+
+/* page parts */
+
+p:first-child {
+	margin-top: 0;
+	padding-top: 0;
+}
+
+.content {
+	width: 100vw;
+	min-height: 100vh;
+	display: flex;
+	flex-flow: column nowrap;
+}
+
+.content #pregame {
+	width: 100%;
+	padding: 1cm 3cm;
+	display: flex;
+	flex-flow: column nowrap;
+	flex-grow: 1;
+	gap: 0.5cm;
+	align-items: center;
+	justify-content: center;
+}
+
+.content #pregame h1 {
+	padding: 0;
+	margin: 0;
+}
+
+.button {
+	display: block;
+	padding: 0.5cm;
+	background-color: #0002;
+	text-align: center;
+	color: inherit;
+}
+
+.button:not(:first-child) {
+	margin-top: 0.5cm;
+}
+
+.content #pregame .button {
+	color: #fff;
+}
+
+.content #pregame .button:hover {
+	background-color: #0004;
+}
+
+.content #game {
+	width: 100%;
+	display: flex;
+	flex-flow: column nowrap;
+	flex-grow: 1;
+	position: relative;
+}
+
+.content #game #intro {
+	position: absolute;
+	top: 0; left: 0;
+	z-index: 100;
+	background-color: #f9f9f9;
+	width: 100%;
+	height: 100vh;
+	padding: 1cm 3cm;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: center;
+	opacity: 1;
+	transition: opacity 1s ease-in-out 0s;
+}
+
+.content #game #bar {
+	position: fixed;
+	bottom: 0; left: 0;
+	z-index: 50;
+	background-color: #36c;
+	color: #fff;
+	width: 100%;
+	height: 3cm;
+	padding: 1cm 3cm;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: left;
+	padding: 1cm;
+	opacity: 1;
+	transition: opacity 1s ease-in-out 0s;
+}
+
+.content #game #bar > div {
+	display: flex;
+	flex-flow: row nowrap;
+	gap: 20px;
+	align-items: baseline;
+	justify-content: left;
+}
+
+.content #game #wikiFrame {
+	position: absolute;
+	top: 0; left: 0;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+	min-height: 100vh;
+	border: none;
+}
+
+#stepCounter, #undoButton {
+	position: absolute;
+	
+	color: #fff;
+	height: 1.5in;
+	width: 1.5in;
+	padding: auto 0;
+	border-radius: 100%;
+
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: center;
+}
+
+#stepCounter {
+	top: 0.7in; right: 0.7in;
+	background-color: #209c08;
+	transition: background-color 0.5s;
+}
+
+#stepCounter[data-step-count="2"], #stepCounter[data-step-count="1"], #stepCounter[data-step-count="0"] {
+	background-color: #d12f0b;
+}
+
+#undoButton {
+	top: 2.9in; right: 0.7in;
+	background-color: #d17b0b;
+}
+
+#stepCounter h1, #undoButton h2 {
+	padding: 0px;
+	margin: 0px;
+	margin-bottom: 5px;
+}
+
+#stepCounter h1 {
+	font-size: 36pt;
+	margin-top: -12px;
+}
+
+
+#undoButton[data-step-count="0"] {
+	opacity: 0.2;
+	pointer-events: none;
+}
+
+/* reusables */
+
+.infobox {
+	background-color: #f9f9f9;
+	border: 1px solid #ddd;
+	padding: 1cm;
+	max-width: 6in;
+	line-height: 1.5;
+
+}
+
+
+.sumbox {
+	background-color: #efefef;
+	padding: 0.5cm;
+	padding-bottom: 0cm;
+	max-width: 6in;
+	font-size: 12px;
+	line-height: 1.5;
+	margin: 0.5cm 0cm;
+}
+
+.bluebox {
+	background-color: #36c;
+	color: #fff;
+	padding: 0.2cm 0.3cm;
+	padding-bottom: 0.3cm;
+	margin: 0.2cm 0px;
+	max-width: 5in;
+	line-height: 1.5;
+}
+
+.greenbox {
+	background-color: #209c08;
+	color: #fff;
+	padding: 0.2cm 0.3cm;
+	padding-bottom: 0.3cm;
+	margin: 0.2cm 0px;
+	max-width: 5in;
+	line-height: 1.5;
+}
+
+.redbox {
+	background-color: #d12f0b;
+	color: #fff;
+	padding: 0.2cm 0.3cm;
+	padding-bottom: 0.3cm;
+	margin: 0.2cm 0px;
+	max-width: 5in;
+	line-height: 1.5;
+}
+
+.floatleft {
+	width: 47.5%;
+	float: left;
+	clear: left;
+}
+
+.floatright {
+	width: 47.5%;
+	float: right;
+	clear: right;
+}
+
+.content .finish {
+	position: absolute;
+	top: 0; left: 0;
+	z-index: 1000;
+	width: 100vw;
+	height: 100vh;
+	padding: 1cm 3cm;
+	flex-flow: column nowrap;
+	flex-grow: 1;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	pointer-events: none;
+	opacity: 0%;
+	transition: opacity 1s ease-in-out;
+	display: flex;
+}
+
+.content .finish.shown {
+	pointer-events: all;
+	opacity: 100%;
+	transition: opacity 1s ease-in-out;
+}
+
+.content .finish .button {
+	background-color: #fff;
+}
+
+.game.finishedGame {
+	pointer-events: none;
+}
+
+#finishGood { background-color: #209c08; }
+.content #finishGood .button { color: #209c08; }
+
+#finishBadUndo { background-color: #d17b0b; }
+.content #finishBadUndo .button { color: #d17b0b; }
+
+#finishBadLinks { background-color: #d12f0b; }
+.content #finishBadLinks .button { color: #d12f0b; }

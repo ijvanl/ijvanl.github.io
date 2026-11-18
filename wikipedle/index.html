@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Wikipedle</title>
+	<link rel="stylesheet" href="index.css">
+	<script src="pageList.js"></script>
+	<script src="pagePicker.js"></script>
+	<script src="wiki.js"></script>
+	<script src="index.js"></script>
+</head>
+<body onload="onPageLoad()">
+	<div class="content">
+		<div id="pregame">
+			<h1>Try your luck with today's Wikipedle.</h1>
+			<!--<a class="button" onclick="playButton()" href="#">Play now</a>-->
+
+			<div class="infobox">
+				<p>
+					<b>Using only the links on the page,</b>
+					get from one article to another
+					<b>in the fewest clicks possible.</b>
+				</p>
+				<p>
+					<b>7 steps allowed,</b> with <b>3 undo steps.</b>
+				</p>
+				<div class="greenbox floatleft">
+					<b>EASY MODE</b><br>
+					Includes info boxes, portals, images, "See Also".
+					<a class="button" onclick="onStartFired(true)" href="#">Play</a>
+				</div>
+				<div class="redbox floatright">
+					<b>HARD MODE</b><br>
+					Only the text and links from the body of the article.
+					<a class="button" onclick="onStartFired(true)" href="#">Play</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="game" style="display: none;">
+			<div id="intro">
+				<span>Your starting article is:</span>
+				<h1 class="startingArticle">Science</h1>
+				<div class="sumbox" id="startingArticleSummary"></div>
+				<br><br>
+				<span>Your target article is:</span>
+				<h1 class="targetArticle">Science</h1>
+				<div class="sumbox" id="targetArticleSummary"></div>
+				<span>Read these summaries quick — you won't see them again.</span><br>
+				<span style="font-size: larger;">Starting in <b class="liveTimer"></b></span>
+			</div>
+			
+			<div id="bar">
+				<div>
+					<span>Current article:</span>
+					<h1 class="currentArticle"></h1>
+
+					<span>Trying to get to:</span>
+					<h1 class="targetArticle"></h1>
+
+					<span>Timer:</span>
+					<h1 class="liveTimer"></h1>
+				</div>
+			</div>
+
+			<iframe id="wikiFrame"></iframe>
+
+			<a id="stepCounter" data-step-count="7">
+				<h1 class="linksLeft">7</h1>
+				<b>steps left</b>
+			</a>
+
+			<a id="undoButton" onclick="undoStep()" data-undo-count="3" data-step-count="0">
+				<h2>Undo</h2>
+				<b><span class="undoSteps">3</span> left</b>
+			</a>
+		</div>
+
+
+		<div class="finish" id="finishGood">
+			<h1>Well done!</h1>
+			<p>
+				You solved today's Wikipedle in <b><span class="linksFollowed">6</span> steps</b>,
+				with <span class="undoSteps">3</span> undo steps remaining. You clever bastard.
+			</p>
+			<a class="button" onclick="copyLink()" href="#">Share your results</a>
+		</div>
+
+		<div class="finish" id="finishBadUndo">
+			<h1>Better luck next time!</h1>
+			<p>
+				You <b>ran out of undo steps</b>,
+				after only following <span class="linksFollowed">6</span> links.
+			</p>
+			<p>Indecisive! Oh well...</p>
+			<a class="button" onclick="copyLink()" href="#">Share your results anyway</a>
+		</div>
+
+		<div class="finish" id="finishBadLinks">
+			<h1>Better luck next time!</h1>
+			<p>
+				You <b>ran out of moves</b>,
+				with <span class="undoSteps">3</span> undo steps left.
+			</p>
+			<p><b>Headstrong!</b> Oh well...</p>
+			<a class="button" onclick="copyLink()" href="#">Share your results anyway</a>
+		</div>
+	</div>
+</body>
+</html>
