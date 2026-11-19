@@ -6,6 +6,7 @@ function gq(query) { return document.querySelectorAll(query); }
 var settings = {
 	introLength:	10,
 	maxSteps:		7,
+	maxUndos:		3,
 	pollInterval:	200,
 	foundingDate:	Date.UTC(2026, 10, 17),
 }
@@ -16,7 +17,7 @@ var game = {
 	targetArticle:		"Science",
 	startTime:			Date.now(),
 	stepCount:			0,
-	undosLeft:			3,
+	undosLeft:			Number(settings.maxUndos),
 	followedLinks:		[],
 	textResults:		"💥",
 	finishCondition:	"",
@@ -125,7 +126,7 @@ function setupGameForToday() {
 }
 
 function onStartFired(resetTimer) {
-	loadWikiContent(formatArticleName(game.startingArticle));
+	loadWikiContent(formatArticleName(game.currentArticle));
 
 	if (resetTimer) game.startTimer();
 	ui.updateArticleTitles();
@@ -259,20 +260,26 @@ function checkForFinish() {
 
 function generateResults() {
 	let text;
+	let undoText = "";
+
+	if (settings.maxUndos - game.undosLeft > 0) {
+		undoText = ` — ${settings.maxUndos - game.undosLeft} undo steps used`;
+	}
+
 	if (game.finishCondition == "win") {
 		text = `Wikipedle ${game.nthGame}
 ${game.textResults}
-${game.stepCount}/${settings.maxSteps} (${game.fmtTimeSinceStart})
+${game.stepCount}/${settings.maxSteps} (${game.fmtTimeSinceStart})${undoText}
 https://ishtar.page/wikipedle/`;
 	} else if (game.finishCondition == "failUndo") {
 		text = `Wikipedle ${game.nthGame}
 ${game.textResults}
-0 undos left (${game.stepCount}/${settings.maxSteps} ${game.fmtTimeSinceStart})
+${game.stepCount}/${settings.maxSteps} (${game.fmtTimeSinceStart}) — all undo steps used
 https://ishtar.page/wikipedle/`
 	} else if (game.finishCondition == "failLinks") {
 		text = `Wikipedle ${game.nthGame}
 ${game.textResults}
-X/${settings.maxSteps} (${game.fmtTimeSinceStart})
+X/${settings.maxSteps} (${game.fmtTimeSinceStart})${undoText}
 https://ishtar.page/wikipedle/`;
 	}
 	console.log(text);

@@ -55,7 +55,6 @@ p:first-child {
 .button {
 	display: block;
 	padding: 0.5cm;
-	background-color: #0002;
 	text-align: center;
 	color: inherit;
 }
@@ -65,11 +64,13 @@ p:first-child {
 }
 
 .content #pregame .button {
+	background-color: #03c;
 	color: #fff;
 }
 
 .content #pregame .button:hover {
-	background-color: #0004;
+	background-color: #fff;
+	color: #03c;
 }
 
 .content #game {
@@ -199,6 +200,11 @@ p:first-child {
 	font-size: 12px;
 	line-height: 1.5;
 	margin: 0.5cm 0cm;
+}
+
+.caption {
+	font-size: 12px;
+	opacity: 0.4;
 }
 
 .bluebox {

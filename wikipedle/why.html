@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Why? — Wikipedle</title>
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+	<div class="content">
+		<div id="pregame">
+			<h1>FAQ</h1>
+			<div class="infobox">
+				<p>
+					<h4>Why does this exist?</h4>
+					Because I was bored, mostly. And because I like Wikipedia. And because I was avoiding a uni assignment.
+				</p><p>
+					<h4>Isn't this already a thing?</h4>
+					Variations of this basic principle, called "the wiki game", "wikigolf", "wikipedia racing" or something else, have been around for a while. This webtoy was inspired by a version of wikigolf I used to play with my nerdy friends in high school, where it was a race against the clock to see who could reach the target page first. It's great fun, if you think a bunch of teenagers sitting in a room and shouting at their laptops counts as fun.
+				</p><p>
+					I haven't seen anything exactly like this yet, though, with Wordle-style turn limits, restricted undo steps, and the ability to share your result via text. Granted, I wouldn't be surprised if this already exists. The idea is pretty obvious. If it does exist, and you made it......... whoops! I'll be honest, I built this website for fun, as an exercise in design/development, without doing any prior research. I'm not deriving any profit from it at the moment, and unless NYT or the Wikimedia Foundation come calling, I <i>probably</i> never will.
+				</p><p>
+					<h4>Is this more Claudeslop?</h4>
+					Nope! Every part of this project (that isn't a Wikimedia API call) was written by me, by hand. You can tell, because it's shitty and it breaks a lot.
+				</p><p>
+					<h4>How did you build it?</h4>
+					I wrote this in pretty plain HTML5/JS/CSS. There's not a huge amount of complex logic going on, if I'm honest. Wikimedia provides an API endpoint which returns a damn near fully-featured HTML excerpt of any Wikipedia page you ask it for, which is REALLY nice to have. Dump that into an iframe, inject some minor styling to clean up the rough edges and you're done. The most complex part of the whole project is the code which strips the <code>href</code> tags off the wiki page links and adds an <code>onclick</code> listener to load the new page from the Wikimedia API instead. It also runs entirely client-side, just like the original Wordle, which means I can host it for free as part of my standard Github Pages plan. Nice!
+				</p><p>
+					<h4>Can I contact you about this?</h4>
+					Sure! I guess. Email me at ishvanlooy <i>[at]</i> gmail <i>dot</i> com.
+				</p>
+			</div>
+		</div>
+</body>
+</html>
