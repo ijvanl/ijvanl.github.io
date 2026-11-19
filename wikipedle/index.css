@@ -188,9 +188,12 @@ p:first-child {
 	padding: 1cm;
 	max-width: 6in;
 	line-height: 1.5;
-
 }
 
+.infobox.why {
+	max-width: 10in;
+	text-align: justify;
+}
 
 .sumbox {
 	background-color: #efefef;
