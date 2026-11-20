@@ -16,11 +16,13 @@ var game = {
 	currentArticle:		"Philosophy",
 	targetArticle:		"Science",
 	startTime:			Date.now(),
+	finishTime:			null,
 	stepCount:			0,
 	undosLeft:			Number(settings.maxUndos),
 	followedLinks:		[],
 	textResults:		"💥",
 	finishCondition:	"",
+	replayCount:		0,
 	get secondsSinceStart() { return ((Date.now() - game.startTime) / 1000) - settings.introLength; },
 	get fmtTimeSinceStart() { 
 		let time = game.secondsSinceStart;
@@ -73,15 +75,22 @@ var ui = {
 			e.innerText = `${settings.maxSteps - game.stepCount}`;
 		for (let e of gq(".undoSteps"))
 			e.innerText = `${game.undosLeft}`;
+		for (let e of gq(".attempts"))
+			e.innerText = `${game.replayCount + 1}`;
 	},
 
 	startIntro() {
+		this.gamePage.classList.remove("gameFinished");
+		gi("finishGood").classList.remove("shown");
+		gi("finishBadUndo").classList.remove("shown");
+		gi("finishBadLinks").classList.remove("shown");
 		this.pregame.style.display = "none";
 		this.gamePage.style.display = "flex";
 	},
 
 	updateLinkChain() {
 		for (let e of gq(".linkChain")) {
+			e.innerHTML = "";
 			for (let article of game.followedLinks) {
 				let a = document.createElement("a");
 				a.innerText = article;
@@ -117,9 +126,11 @@ function onPageLoad() {
 		game.targetArticle = parsedGame.targetArticle;
 		game.followedLinks = parsedGame.followedLinks;
 		game.startTime = parsedGame.startTime;
+		game.finishTime = parsedGame.finishTime;
 		game.stepCount = parsedGame.stepCount;
 		game.undosLeft = parsedGame.undosLeft;
 		game.textResults = parsedGame.textResults;
+		game.replayCount = parsedGame.replayCount;
 		console.log(game.startTime);
 		onStartFired(false);
 		checkForFinish();
@@ -140,6 +151,38 @@ function setupGameForToday() {
 	gi("targetArticleSummary").innerHTML = getWikiSummary(formatArticleName(game.targetArticle));
 	localStorage.setItem("gameData", JSON.stringify(game));
 }
+
+function replay() {
+	// startingArticle:	"Philosophy",
+	// currentArticle:		"Philosophy",
+	// targetArticle:		"Science",
+	// startTime:			Date.now(),
+	// stepCount:			0,
+	// undosLeft:			Number(settings.maxUndos),
+	// followedLinks:		[],
+	// textResults:		"💥",
+	// finishCondition:	"",
+	// replayCount:		0,
+	
+	let nthDay = game.nthGame;
+	let articles = getPagesForToday(nthDay, pageList);
+	console.log(articles);
+	game.currentArticle = game.startingArticle;
+	game.startTime = Date.now();
+	game.finishTime = null;
+	game.stepCount = 0;
+	game.undosLeft = Number(settings.maxUndos);
+	game.followedLinks = [game.startingArticle];
+	game.textResults = "💥";
+	game.finishCondition = "";
+	game.replayCount += 1;
+
+	localStorage.setItem("gameData", JSON.stringify(game));
+
+	ui.updateLinkChain();
+	onStartFired(true);
+}
+
 
 function onStartFired(resetTimer) {
 	loadWikiContent(formatArticleName(game.currentArticle));
@@ -289,17 +332,17 @@ function generateResults() {
 	}
 
 	if (game.finishCondition == "win") {
-		text = `Wikipedle ${game.nthGame}
+		text = `Wikipedle ${game.nthGame} (attempt #${game.replayCount + 1})
 ${game.textResults}
 ${game.stepCount}/${settings.maxSteps} (${game.fmtTimeSinceStart})${undoText}
 https://ishtar.page/wikipedle/`;
 	} else if (game.finishCondition == "failUndo") {
-		text = `Wikipedle ${game.nthGame}
+		text = `Wikipedle ${game.nthGame} (attempt #${game.replayCount + 1})
 ${game.textResults}
 ${game.stepCount}/${settings.maxSteps} (${game.fmtTimeSinceStart}) — all undo steps used
 https://ishtar.page/wikipedle/`
 	} else if (game.finishCondition == "failLinks") {
-		text = `Wikipedle ${game.nthGame}
+		text = `Wikipedle ${game.nthGame} (attempt #${game.replayCount + 1})
 ${game.textResults}
 X/${settings.maxSteps} (${game.fmtTimeSinceStart})${undoText}
 https://ishtar.page/wikipedle/`;
