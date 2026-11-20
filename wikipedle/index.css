@@ -261,6 +261,7 @@ p:first-child {
 	padding: 1cm 3cm;
 	flex-flow: column nowrap;
 	flex-grow: 1;
+	text-align: center;
 	align-items: center;
 	justify-content: center;
 	color: #fff;
@@ -276,8 +277,43 @@ p:first-child {
 	transition: opacity 1s ease-in-out;
 }
 
-.content .finish .button {
+.content .finish .button.primary, .content .finish .button.secondary:hover {
 	background-color: #fff;
+	border: 1px solid #fff;
+}
+
+.content .finish .button.secondary {
+	background-color: #0000;
+	color: #fff;
+	border: 1px solid #fff;
+}
+
+.content .finish a:not(.button) {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.linkChain > a {
+	margin: 0px 6px;
+}
+
+.linkChain > a:first-of-type, .linkChain > a:last-of-type {
+	font-weight: 700;
+}
+
+.linkChain > a:not(:last-child)::after {
+	content: "→";
+	font-weight: 400;
+	display: inline-block;
+	font-family: system-ui;
+	text-decoration: none;
+	margin-left: 12px;
+	pointer-events: none;
+}
+
+.content .finish a.readMore {
+	display: block;
+	margin: 2em 0;
 }
 
 .game.finishedGame {
@@ -285,10 +321,10 @@ p:first-child {
 }
 
 #finishGood { background-color: #209c08; }
-.content #finishGood .button { color: #209c08; }
+.content #finishGood .button.primary, .content #finishGood .button.secondary:hover { color: #209c08; }
 
 #finishBadUndo { background-color: #d17b0b; }
-.content #finishBadUndo .button { color: #d17b0b; }
+.content #finishBadUndo .button.primary, .content #finishBadUndo .button.secondary:hover { color: #d17b0b; }
 
 #finishBadLinks { background-color: #d12f0b; }
-.content #finishBadLinks .button { color: #d12f0b; }
+.content #finishBadLinks .button.primary, .content #finishBadLinks .button.secondary:hover { color: #d12f0b; }

@@ -40,6 +40,7 @@ var ui = {
 	wikiDoc:		null,
 	undoButton:		null,
 	stepCounter:	null,
+	readMoreLink:	null,
 
 	startSummary:	"",
 	targetSummary:	"",
@@ -50,6 +51,10 @@ var ui = {
 		for (let e of gq(".startingArticle")) e.innerText = `${game.startingArticle}`;
 		for (let e of gq(".currentArticle")) e.innerText = `${game.currentArticle}`;
 		for (let e of gq(".targetArticle")) e.innerText = `${game.targetArticle}`;
+		for (let e of gq(".readMore")) {
+			e.innerText = `Go to "${game.targetArticle}" on Wikipedia`;
+			e.href = articleUrl(game.targetArticle);
+		}
 	},
 
 	updateTimers() {
@@ -70,10 +75,20 @@ var ui = {
 			e.innerText = `${game.undosLeft}`;
 	},
 
-
 	startIntro() {
 		this.pregame.style.display = "none";
 		this.gamePage.style.display = "flex";
+	},
+
+	updateLinkChain() {
+		for (let e of gq(".linkChain")) {
+			for (let article of game.followedLinks) {
+				let a = document.createElement("a");
+				a.innerText = article;
+				a.href = articleUrl(article);
+				e.appendChild(a);
+			}
+		}
 	},
 
 	updateInterface() {
@@ -92,6 +107,7 @@ function onPageLoad() {
 	ui.undoButton = gi("undoButton");
 	ui.stepCounter = gi("stepCounter");
 	ui.wikiDoc = ui.wikiFrame.contentDocument || ui.wikiFrame.contentWindow.document;
+
 
 	if (localStorage.getItem("gameInPlay") == `${game.nthGame}`) {
 		let parsedGame = JSON.parse(localStorage.getItem("gameData"));
@@ -186,6 +202,10 @@ function formatArticleName(articleName) {
 	return encodeURI(articleName.replaceAll(" ", "_"));
 }
 
+function articleUrl(articleName) {
+	return `https://en.wikipedia.org/wiki/${formatArticleName(articleName)}`;
+}
+
 function followWikiLink(element, href) {
 	game.stepCount += 1;
 	game.currentArticle = cleanupHref(href);
@@ -241,6 +261,8 @@ function checkForFinish() {
 	if (game.undosLeft <= 0 || game.stepCount >= settings.maxSteps || game.currentArticle == game.targetArticle) {
 		ui.gamePage.classList.add("gameFinished");
 		
+		ui.updateLinkChain();
+
 		if (game.undosLeft <= 0) {
 			gi("finishBadUndo").classList.add("shown");
 			game.textResults = game.textResults + "🟧";

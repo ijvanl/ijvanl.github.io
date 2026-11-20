@@ -75,7 +75,13 @@
 				You solved today's Wikipedle in <b><span class="linksFollowed">6</span> steps</b>,
 				with <span class="undoSteps">3</span> undo steps remaining. You clever bastard.
 			</p>
-			<a class="button" onclick="generateResults()" href="#">Share your results</a>
+			<p>
+				<i>Your route:</i>
+				<span class="linkChain"></span>
+				<br><span class="caption">Click any to read more.</span>
+			</p>
+			<a class="button primary" onclick="generateResults()" href="#">Share your results</a>
+			<a class="button secondary" onclick="replay()" href="#">Play today's game again</a>
 		</div>
 
 		<div class="finish" id="finishBadUndo">
@@ -85,7 +91,13 @@
 				after only following <span class="linksFollowed">6</span> links.
 			</p>
 			<p>Indecisive! Oh well...</p>
-			<a class="button" onclick="generateResults()" href="#">Share your results anyway</a>
+			<p>
+				<i>Your route:</i>
+				<span class="linkChain"></span>
+				<br><span class="caption">Click any to read more.</span>
+			</p>
+			<a class="button primary" onclick="generateResults()" href="#">Share your results</a>
+			<a class="button secondary" onclick="replay()" href="#">Play today's game again</a>
 		</div>
 
 		<div class="finish" id="finishBadLinks">
@@ -95,7 +107,13 @@
 				with <span class="undoSteps">3</span> undo steps left.
 			</p>
 			<p><b>Headstrong!</b> Oh well...</p>
-			<a class="button" onclick="generateResults()" href="#">Share your results anyway</a>
+			<p>
+				<i>Your route:</i>
+				<span class="linkChain"></span>
+				<br><span class="caption">Click any to read more.</span>
+			</p>
+			<a class="button primary" onclick="generateResults()" href="#">Share your results</a>
+			<a class="button secondary" onclick="replay()" href="#">Play today's game again</a>
 		</div>
 	</div>
 </body>
